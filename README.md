@@ -82,7 +82,6 @@ research-enterprise-codebases/
 ├── github_stats_viewer.ipynb        # Results visualization
 ├── github_repository_stats.csv      # Collected statistics (generated)
 ├── github_stats_metadata.json       # Collection metadata (generated)
-├── CLAUDE.md                        # AI assistant instructions
 ├── .env                             # GitHub token (create this)
 └── README.md                        # This file
 ```
