@@ -7,8 +7,8 @@ import json
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
-from .client import GitHubClient
-from .models import RepositoryStats, CollectionMetadata
+from api.github.client import GitHubClient
+from api.github.models import RepositoryStats, CollectionMetadata
 
 
 class RepositoryCollector:
