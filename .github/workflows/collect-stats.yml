@@ -24,18 +24,21 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests pandas jupyter python-dotenv
+        pip install requests pandas python-dotenv pyyaml
     
     - name: Run data collection
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        jupyter nbconvert --to python github_data_collector.ipynb
-        python github_data_collector.py
+        python api/github/collector.py
+    
+    - name: Generate reports
+      run: |
+        python scripts/generate_reports.py
     
     - name: Commit and push if changed
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git add github_repository_stats.csv github_stats_metadata.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update repository statistics [skip ci]" && git push)
+        git add data/ views/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update repository statistics and reports [skip ci]" && git push)
