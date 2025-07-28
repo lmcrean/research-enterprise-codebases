@@ -10,9 +10,9 @@ from unittest.mock import Mock, patch
 # Add the project root to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from api.itjobswatch.client import ITJobsWatchClient
-from api.itjobswatch.collector import ITJobsWatchCollector
-from api.itjobswatch.models import JobMarketStats, JobMarketMetadata
+from api.it_jobs_watch.client import ITJobsWatchClient
+from api.it_jobs_watch.collector import ITJobsWatchCollector
+from api.it_jobs_watch.models import JobMarketStats, JobMarketMetadata
 
 
 class TestITJobsWatchClient:
@@ -160,7 +160,7 @@ class TestITJobsWatchCollector:
         finally:
             shutil.rmtree(temp_dir)
     
-    @patch('api.itjobswatch.collector.ITJobsWatchClient')
+    @patch('api.it_jobs_watch.collector.ITJobsWatchClient')
     def test_save_to_csv(self, mock_client_class):
         """Test CSV saving functionality."""
         temp_dir = tempfile.mkdtemp()

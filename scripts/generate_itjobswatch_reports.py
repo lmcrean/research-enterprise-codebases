@@ -19,7 +19,7 @@ def load_itjobswatch_data():
     metadata_path = os.path.join(data_dir, "itjobswatch_metadata.json")
     
     if not os.path.exists(csv_path):
-        print(f"❌ Data file not found: {csv_path}")
+        print(f"Data file not found: {csv_path}")
         return None, None
     
     # Load CSV data
@@ -198,7 +198,7 @@ def generate_technology_reports(df):
 
 def main():
     """Generate all IT Jobs Watch reports."""
-    print("📊 Generating IT Jobs Watch reports...")
+    print("Generating IT Jobs Watch reports...")
     
     # Load data
     df, metadata = load_itjobswatch_data()
@@ -215,7 +215,7 @@ def main():
     
     with open(summary_path, 'w', encoding='utf-8') as f:
         f.write(summary_report)
-    print(f"✅ Generated summary report: {summary_path}")
+    print(f"Generated summary report: {summary_path}")
     
     # Generate technology category reports
     tech_reports = generate_technology_reports(df)
@@ -224,9 +224,9 @@ def main():
         report_path = os.path.join(views_dir, f"itjobswatch_{category}.md")
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
-        print(f"✅ Generated {category} report: {report_path}")
+        print(f"Generated {category} report: {report_path}")
     
-    print(f"🎉 Report generation complete! Generated {1 + len(tech_reports)} reports")
+    print(f"Report generation complete! Generated {1 + len(tech_reports)} reports")
 
 
 if __name__ == "__main__":
