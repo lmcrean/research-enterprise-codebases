@@ -46,6 +46,7 @@ env/
 */settings.local.json
 *.md
 !README.md
+!views/
 
 # OS
 .DS_Store
