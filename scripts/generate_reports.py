@@ -81,7 +81,7 @@ class ReportGenerator:
 """
         
         for repo in top_repos_formatted:
-            content += f"| [{repo['Name']}](https://github.com/{repo['Name']}) | {repo['Field']} | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Pull Requests']} |\n"
+            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Field']} | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Pull Requests']} |\n"
         
         content += f"""
 ## Category Reports
@@ -148,7 +148,7 @@ class ReportGenerator:
 """
         
         for repo in category_repos:
-            content += f"| [{repo['Name']}](https://github.com/{repo['Name']}) | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Issues']} | {repo['Open Pull Requests']} | {repo['Date Created']} | {repo['Last Active']} |\n"
+            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Issues']} | {repo['Open Pull Requests']} | {repo['Date Created']} | {repo['Last Active']} |\n"
         
         content += f"""
 ## Key Insights

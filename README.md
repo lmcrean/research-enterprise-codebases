@@ -3,13 +3,14 @@
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![GitHub API](https://img.shields.io/badge/GitHub-API%20v3-black.svg)](https://docs.github.com/en/rest)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](integration/)
 
-A comprehensive analysis tool for examining GitHub repository statistics across different technology categories including AI/ML, TypeScript, and C# ASP.NET projects.
+A comprehensive analysis tool for examining GitHub repository statistics across different technology categories including AI/ML, TypeScript, C# ASP.NET, and developer tools.
 
 ## 🎯 Overview
 
 This project collects and analyzes repository statistics from 55+ popular open-source enterprise codebases, providing insights into:
-- Star counts and popularity trends
+- Star counts and popularity trends (formatted as 12.3k, 1.2M for readability)
 - Fork and contributor statistics
 - Pull request activity
 - Technology stack distributions
@@ -21,7 +22,6 @@ This project collects and analyzes repository statistics from 55+ popular open-s
 
 - Python 3.8 or higher
 - GitHub personal access token (for API access)
-- Jupyter Notebook
 
 ### Installation
 
@@ -33,7 +33,7 @@ cd research-enterprise-codebases
 
 2. Install dependencies:
 ```bash
-pip install requests pandas jupyter python-dotenv
+pip install -r requirements.txt
 ```
 
 3. Create a `.env` file with your GitHub token:
@@ -46,111 +46,152 @@ echo "GITHUB_TOKEN=your_github_token_here" > .env
 #### 1. Verify Setup
 Test your configuration:
 ```bash
-python quick_test.py
+python scripts/quick_test.py
 ```
 
 #### 2. Collect Data
-Run the data collection notebook to fetch fresh statistics:
+Run the data collection script to fetch fresh statistics:
 ```bash
-jupyter notebook github_data_collector.ipynb
+python api/github/collector.py
 ```
 
 This will:
 - Fetch repository data from GitHub API
 - Handle rate limiting automatically
-- Save results to `github_repository_stats.csv`
+- Save results to `data/raw/github_repository_stats.csv`
 - Create metadata file with collection timestamp
 
-#### 3. View Results
-Open the viewer notebook to see formatted statistics:
+#### 3. Generate Reports
+Create markdown reports with formatted data:
 ```bash
-jupyter notebook github_stats_viewer.ipynb
+python scripts/generate_reports.py
 ```
 
-Features:
-- Summary statistics cards
-- Technology-grouped repository tables
-- Top 10 most starred repositories
-- Visual progress bars for metrics
+#### 4. View Results
+Open the generated markdown reports in `views/`:
+- [Overview Report](views/all.md) - Comprehensive summary
+- [AI/ML Repositories](views/ai_ml.md) - AI/ML focused analysis
+- [TypeScript Projects](views/typescript.md) - TypeScript ecosystem
+- [C# ASP.NET Projects](views/csharp.md) - C# ASP.NET analysis
 
 ## 📁 Project Structure
 
 ```
 research-enterprise-codebases/
-├── quick_test.py                    # API connection verification
-├── github_data_collector.ipynb      # Data collection notebook
-├── github_stats_viewer.ipynb        # Results visualization
-├── github_repository_stats.csv      # Collected statistics (generated)
-├── github_stats_metadata.json       # Collection metadata (generated)
-├── .env                             # GitHub token (create this)
-└── README.md                        # This file
+├── api/
+│   ├── github/                          # GitHub API client modules
+│   │   ├── client.py                    # API client with rate limiting
+│   │   ├── collector.py                 # Data collection orchestrator
+│   │   ├── models.py                    # Data structures
+│   │   └── utils.py                     # Formatting utilities
+│   └── config/
+│       └── repositories.yml             # Repository configuration
+├── data/
+│   ├── raw/                            # Raw CSV data and metadata
+│   └── processed/                       # Analysis results
+├── views/                              # Generated markdown reports
+│   ├── all.md                          # Comprehensive overview
+│   ├── ai_ml.md                        # AI/ML repositories
+│   ├── typescript.md                   # TypeScript projects
+│   └── csharp.md                       # C# ASP.NET projects
+├── scripts/
+│   ├── generate_reports.py             # Report generation
+│   └── quick_test.py                   # Setup verification
+├── integration/
+│   └── tests/                          # Integration tests
+├── .github/workflows/                  # GitHub Actions automation
+└── CLAUDE.md                           # AI assistant instructions
 ```
 
-## 📊 Repository Categories
+## 🔧 Configuration & Automation
 
-The analysis covers three main technology categories:
+### Repository Management
+Add new repositories to analyze by editing `api/config/repositories.yml`:
 
-### AI/ML Repositories
-- TensorFlow, PyTorch, scikit-learn
-- Hugging Face Transformers
-- FastAPI, Streamlit
-- And more...
+```yaml
+repositories:
+  AI/ML:
+    - tensorflow/tensorflow
+    - pytorch/pytorch
+  TypeScript:
+    - microsoft/TypeScript
+    - nestjs/nest
+```
 
-### TypeScript Projects
-- Angular, Vue.js, Next.js
-- NestJS, TypeORM
-- Storybook, Playwright
-- And more...
-
-### C# ASP.NET Projects
-- ASP.NET Core, Entity Framework
-- Orleans, MassTransit
-- Ocelot, IdentityServer4
-- And more...
-
-## 🔧 Configuration
-
-### GitHub Token
-The project requires a GitHub personal access token for API access:
-1. Go to GitHub Settings → Developer settings → Personal access tokens
-2. Generate a new token with `public_repo` scope
-3. Add to `.env` file as `GITHUB_TOKEN=your_token_here`
+### GitHub Actions
+Automated data collection runs weekly via GitHub Actions:
+- Fetches fresh repository statistics
+- Generates updated reports
+- Commits changes automatically
 
 ### API Rate Limits
 - With token: 5,000 requests/hour
 - Without token: 60 requests/hour
-- The collector implements automatic rate limit handling
+- Automatic rate limit handling and retry logic
 
-## 📈 Output Examples
+## 📊 Repository Categories
 
-The viewer notebook displays:
+### AI/ML Repositories (20 repos)
+- TensorFlow, PyTorch, scikit-learn
+- Hugging Face ecosystem (Transformers, TRL)
+- AutoGPT, ComfyUI, Ollama
+- LangChain, Dify, n8n
 
-### Summary Cards
+### TypeScript Projects (21 repos)
+- Backend frameworks: NestJS, Fastify, AdonisJS
+- ORMs: TypeORM, Prisma, Drizzle
+- Utilities: Zod, tRPC, Winston
+
+### C# ASP.NET Projects (13 repos)
+- ASP.NET Core, Entity Framework Core
+- Microservices: Orleans, Polly, Ocelot
+- E-commerce: nopCommerce
+
+### Developer Tools
+- Educational resources and development utilities
+
+## 📈 Report Features
+
+### Number Formatting
+- Stars displayed as readable format: 12.3k, 1.2M, 147k
+- Consistent formatting across all metrics
+
+### Interactive Links
+- Repository names link to GitHub (open in new tab)
+- Easy navigation between category reports
+
+### Statistics Summary
+- Total repositories, stars, and forks per category
+- Most popular and most active repositories
+- Collection timestamps and metadata
+
+## 🧪 Testing
+
+Run integration tests to verify functionality:
+```bash
+cd integration
+python -m pytest tests/ -v
 ```
-Total Repositories: 55
-Total Stars: 1,234,567
-Total Forks: 345,678
-Average Stars: 22,446
-```
 
-### Repository Tables
-Styled tables showing:
-- Repository name and owner
-- Star count with visual bars
-- Fork count
-- Open issues
-- Contributor count
-- Last update date
+Tests cover:
+- API client initialization
+- Number formatting utilities
+- Configuration loading
+- Directory structure validation
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Add new repositories to `api/config/repositories.yml`
+3. Run tests to ensure functionality
+4. Submit a Pull Request
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
 - GitHub API for providing comprehensive repository data
 - All the amazing open-source projects analyzed in this study
+- Automated with ❤️ using GitHub Actions
