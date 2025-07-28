@@ -4,9 +4,20 @@ import csv
 import json
 import time
 import os
+import sys
 from typing import List, Dict
-from .client import ITJobsWatchClient
-from .models import JobMarketStats, JobMarketMetadata
+
+# Add parent directory to path for imports when run standalone
+if __name__ == "__main__":
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+
+try:
+    from .client import ITJobsWatchClient
+    from .models import JobMarketStats, JobMarketMetadata
+except ImportError:
+    # Fallback for standalone execution
+    from client import ITJobsWatchClient
+    from models import JobMarketStats, JobMarketMetadata
 
 
 class ITJobsWatchCollector:
@@ -23,18 +34,18 @@ class ITJobsWatchCollector:
     
     def collect_all_data(self) -> Dict:
         """Collect job market data for all configured technologies."""
-        print("🔍 Starting IT Jobs Watch data collection...")
+        print("Starting IT Jobs Watch data collection...")
         start_time = time.time()
         
         all_stats = []
         
         for i, technology in enumerate(self.technologies, 1):
-            print(f"📊 Collecting data for {technology} ({i}/{len(self.technologies)})")
+            print(f"Collecting data for {technology} ({i}/{len(self.technologies)})")
             
             tech_stats = self.client.get_london_job_stats(technology)
             all_stats.extend(tech_stats)
             
-            print(f"   ✅ Found {len(tech_stats)} job roles for {technology}")
+            print(f"   Found {len(tech_stats)} job roles for {technology}")
         
         # Save data to CSV
         csv_path = os.path.join(self.output_dir, "itjobswatch_stats.csv")
@@ -59,13 +70,13 @@ class ITJobsWatchCollector:
             'metadata_file': metadata_path
         }
         
-        print(f"✅ Collection complete! Found {len(all_stats)} job roles in {collection_time:.1f}s")
+        print(f"Collection complete! Found {len(all_stats)} job roles in {collection_time:.1f}s")
         return summary
     
     def _save_to_csv(self, stats: List[JobMarketStats], file_path: str):
         """Save job market statistics to CSV file."""
         if not stats:
-            print("⚠️  No data to save")
+            print("No data to save")
             return
         
         with open(file_path, 'w', newline='', encoding='utf-8') as csvfile:
@@ -76,7 +87,7 @@ class ITJobsWatchCollector:
             for stat in stats:
                 writer.writerow(stat.to_dict())
         
-        print(f"💾 Saved {len(stats)} records to {file_path}")
+        print(f"Saved {len(stats)} records to {file_path}")
     
     def _save_metadata(self, metadata: JobMarketMetadata, file_path: str):
         """Save collection metadata to JSON file."""
@@ -90,7 +101,7 @@ class ITJobsWatchCollector:
         with open(file_path, 'w', encoding='utf-8') as jsonfile:
             json.dump(metadata_dict, jsonfile, indent=2)
         
-        print(f"📋 Saved metadata to {file_path}")
+        print(f"Saved metadata to {file_path}")
 
 
 def main():
@@ -106,7 +117,7 @@ def main():
     collector = ITJobsWatchCollector(technologies)
     summary = collector.collect_all_data()
     
-    print("\n📈 Collection Summary:")
+    print("\nCollection Summary:")
     for key, value in summary.items():
         print(f"   {key}: {value}")
 

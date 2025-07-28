@@ -5,7 +5,11 @@ import time
 import re
 from typing import Optional, List
 from bs4 import BeautifulSoup
-from .models import JobMarketStats
+
+try:
+    from .models import JobMarketStats
+except ImportError:
+    from models import JobMarketStats
 
 
 class ITJobsWatchClient:
@@ -45,7 +49,7 @@ class ITJobsWatchClient:
             return job_stats
             
         except Exception as e:
-            print(f"❌ Error fetching data for {technology}: {str(e)}")
+            print(f"Error fetching data for {technology}: {str(e)}")
             return []
     
     def _parse_job_data(self, soup: BeautifulSoup, technology: str) -> List[JobMarketStats]:
@@ -60,7 +64,7 @@ class ITJobsWatchClient:
             table = soup.find('table')
         
         if not table:
-            print(f"⚠️  No data table found for {technology}")
+            print(f"No data table found for {technology}")
             return []
         
         rows = table.find_all('tr')[1:]  # Skip header row
@@ -97,7 +101,7 @@ class ITJobsWatchClient:
                     job_stats.append(stats)
                     
                 except Exception as e:
-                    print(f"⚠️  Error parsing row for {technology}: {str(e)}")
+                    print(f"Error parsing row for {technology}: {str(e)}")
                     continue
         
         return job_stats
