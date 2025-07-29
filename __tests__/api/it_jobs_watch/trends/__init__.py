@@ -1,1 +1,0 @@
-"""ITJobsWatch trends unit tests."""
