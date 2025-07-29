@@ -14,10 +14,10 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from .config import (
+from config import (
     OUTPUT_DIR, USER_AGENT, REQUEST_TIMEOUT, MAX_RETRIES, RATE_LIMIT_DELAY
 )
-from .url_builder import generate_all_urls, generate_priority_urls
+from url_builder import generate_all_urls, generate_priority_urls
 
 
 class WebPScraper:
@@ -257,7 +257,7 @@ def main():
         scraper.scrape_all_charts()
     elif args.mode == 'test':
         # Test with just one URL
-        from .url_builder import build_chart_url, generate_filename
+        from url_builder import build_chart_url, generate_filename
         url = build_chart_url('web-development', 'uk/england/london')
         filename = generate_filename('web-development', 'uk/england/london', 
                                    'demand-trend', 'permanent', 'm2x')

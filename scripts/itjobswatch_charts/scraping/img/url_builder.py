@@ -3,7 +3,7 @@ URL construction utilities for ITJobsWatch chart scraping.
 """
 
 from typing import List, Dict, Tuple
-from .config import BASE_URL, SKILLS, LOCATIONS, CHART_TYPES, JOB_TYPES, TIME_PERIODS
+from config import BASE_URL, SKILLS, LOCATIONS, CHART_TYPES, JOB_TYPES, TIME_PERIODS
 
 
 def build_chart_url(skill: str, location: str = "uk", chart_type: str = "demand-trend", 
@@ -89,8 +89,8 @@ def generate_priority_urls() -> List[Tuple[str, str, Dict[str, str]]]:
     Returns:
         List of tuples: (url, filename, metadata_dict)
     """
-    priority_skills = ["web-development", "artificial-intelligence", "python", "javascript"]
-    priority_locations = ["uk", "uk/england/london"]
+    priority_skills = SKILLS  # Use all skills from config
+    priority_locations = ["uk/england/london"]  # Focus on London
     priority_chart_types = ["demand-trend"]
     priority_job_types = ["permanent"]
     priority_time_periods = ["m2x"]
