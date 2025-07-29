@@ -24,12 +24,12 @@ class WebPScraper:
     """WebP chart scraper for ITJobsWatch."""
     
     def __init__(self, output_dir: str = OUTPUT_DIR):
-        self.output_dir = Path(output_dir)
+        self.base_output_dir = Path(output_dir)
         self.session = self._create_session()
         self.logger = self._setup_logging()
         
-        # Create output directory
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        # Create base output directory
+        self.base_output_dir.mkdir(parents=True, exist_ok=True)
         
         # Statistics
         self.stats = {
@@ -79,7 +79,7 @@ class WebPScraper:
             console_handler.setLevel(logging.INFO)
             
             # File handler
-            log_file = self.output_dir / 'scraper.log'
+            log_file = self.base_output_dir / 'scraper.log'
             file_handler = logging.FileHandler(log_file)
             file_handler.setLevel(logging.DEBUG)
             
@@ -107,7 +107,17 @@ class WebPScraper:
         Returns:
             True if successful, False otherwise
         """
-        filepath = self.output_dir / filename
+        # Create directory path based on location and chart type
+        location_short = metadata['location'].split('/')[-1] if '/' in metadata['location'] else metadata['location']
+        chart_dir = f"{location_short}-{metadata['chart_type']}"
+        output_dir = self.base_output_dir / chart_dir / "charts"
+        metadata_dir = output_dir / "file-data"
+        
+        # Create directories
+        output_dir.mkdir(parents=True, exist_ok=True)
+        metadata_dir.mkdir(parents=True, exist_ok=True)
+        
+        filepath = output_dir / filename
         
         # Skip if file already exists
         if filepath.exists():
@@ -131,8 +141,8 @@ class WebPScraper:
             with open(filepath, 'wb') as f:
                 f.write(response.content)
             
-            # Save metadata
-            metadata_file = filepath.with_suffix('.json')
+            # Save metadata in file-data subdirectory
+            metadata_file = metadata_dir / f"{filepath.stem}.json"
             metadata_with_download = metadata.copy()
             metadata_with_download.update({
                 'downloaded_at': datetime.now().isoformat(),
@@ -219,7 +229,7 @@ class WebPScraper:
         self.logger.info(f"Errors: {self.stats['errors']}")
         
         # Save stats to file
-        stats_file = self.output_dir / 'scrape_stats.json'
+        stats_file = self.base_output_dir / 'scrape_stats.json'
         stats_with_timestamp = self.stats.copy()
         stats_with_timestamp['completed_at'] = datetime.now().isoformat()
         

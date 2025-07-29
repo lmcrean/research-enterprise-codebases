@@ -54,7 +54,7 @@ BASE_URL = "https://www.itjobswatch.co.uk/charts"
 
 RATE_LIMIT_DELAY = 1.0
 
-OUTPUT_DIR = "data/scraped/itjobswatch/charts"
+OUTPUT_DIR = "data/scraped/itjobswatch"
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 

@@ -36,20 +36,19 @@ def build_chart_url(skill: str, location: str = "uk", chart_type: str = "demand-
 def generate_filename(skill: str, location: str, chart_type: str, 
                      job_type: str, time_period: str) -> str:
     """
-    Generate a descriptive filename for the downloaded WebP file.
+    Generate a simple filename for the downloaded WebP file.
     
     Args:
         skill: The skill/technology keyword
-        location: Geographic location
-        chart_type: Type of chart
-        job_type: Type of job
-        time_period: Time period for the chart
+        location: Geographic location (unused for filename)
+        chart_type: Type of chart (unused for filename)
+        job_type: Type of job (unused for filename)
+        time_period: Time period for the chart (unused for filename)
     
     Returns:
-        Filename string (e.g., 'web-development_london_demand-trend_permanent_m2x.webp')
+        Simple filename string (e.g., 'artificial-intelligence.webp')
     """
-    location_short = location.split('/')[-1] if '/' in location else location
-    return f"{skill}_{location_short}_{chart_type}_{job_type}_{time_period}.webp"
+    return f"{skill}.webp"
 
 
 def generate_all_urls() -> List[Tuple[str, str, Dict[str, str]]]:
