@@ -14,10 +14,12 @@ import json
 from pathlib import Path
 
 # Add project root to path
-sys.path.insert(0, str(Path(__file__).parent))
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
 
 from api.it_jobs_watch.chart_parser import ITJobsWatchChartParser
 from corrected_chart_parser import CorrectedChartParser
+from chart_annotator import create_debug_visualization
 
 
 def test_artificial_intelligence_extraction():
@@ -163,6 +165,26 @@ def test_artificial_intelligence_extraction():
     for year in sample_years:
         if year in data_dict:
             print(f"   {year}: {data_dict[year]:.2f}%")
+    
+    # Create visual debug output
+    print("\n" + "="*60)
+    print("CREATING VISUAL DEBUG OUTPUT")
+    print("="*60)
+    
+    expected_points = {
+        2017: 0.9,
+        2019: 3.4,
+        2023: 4.0,  # Based on manual data, 2023 is around 4%
+        2025: 8.0   # 2025 data shows 8%
+    }
+    
+    try:
+        create_debug_visualization(technology, data_points, expected_points)
+        print("[SUCCESS] Visual debug output created successfully")
+        print("Check views/charts/drawn-over/ for annotated chart")
+        print("Check views/charts/drawn-over/debug/ for debug outputs")
+    except Exception as e:
+        print(f"[WARNING] Could not create visual debug output: {e}")
     
     return all_tests_passed
 
