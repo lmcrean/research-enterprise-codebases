@@ -19,13 +19,13 @@ A comprehensive analysis tool for examining GitHub repository statistics across 
 
 ## Problem Statement:
 
-**Data-Driven Decision making**
-Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. This can of course be ignored but skipping the need for data-driven research leaves freelancers, and IT professionals relying soley on intuition, constantly looking over their shoulder in a volatile/ speculative market conditions. 
+**Volatility**
+Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. This can of course be ignored but skipping the need for data-driven research leaves freelancers and IT professionals relying soley on intuition, constantly looking over their shoulder in a volatile/ speculative market conditions.
 
 **Manual Researching data is time consuming.** 
 Sources such as ITJobsWatch tend to be viewed best individually. Grouping queries together does not always compare trends.
 
-**AI Researching leaves room for error**
+**AI Deep Research shortcomings**
 Cutting-edge Deep Research applications such as Gemini, Claud and ChatGPT, however impressive are observed to hallucinate statistics.
 
 ## Solution:
