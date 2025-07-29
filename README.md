@@ -41,6 +41,7 @@ flowchart LR
     C -- "Reads" --> H["Human"]
     C -- "Synchronise Plugin" --> D["AI (Claude Projects, etc.)"]
     H -- "consults" --> D
+    style B fill:#90ee90,stroke:#333,stroke-width:2px
 ```
 ***Diagram (above):*** Using Rosalia in research workflow ensures accurate data while saving time of manual research.
 
