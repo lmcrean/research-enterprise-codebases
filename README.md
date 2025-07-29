@@ -8,7 +8,7 @@
 ```
 
 
-# Rosalia -- Research Enterprise Codebases 📊
+# Rosalia -- Research Analyst for IT Markets 📊
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
