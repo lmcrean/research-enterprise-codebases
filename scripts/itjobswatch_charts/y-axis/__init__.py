@@ -1,0 +1,1 @@
+"""Y-axis (value) detection modules for ITJobsWatch chart parsing."""

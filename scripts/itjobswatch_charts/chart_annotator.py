@@ -52,14 +52,19 @@ class ChartAnnotator:
             cv2.putText(self.annotated, str(year), (x - 20, self.chart_bottom + 20),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
         
-        # Y-axis: Percentages from 0% to 12% at 1% intervals
-        for pct in range(0, 13):
-            y = self._percentage_to_y(pct)
+        # Y-axis: Complete grid coverage for all percentages 0-12%
+        # Updated with actual detected 12% line position
+        all_y_positions = [545, 509, 472, 435, 399, 362, 325, 289, 252, 215, 179, 142, 87]
+        all_percentages = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        
+        for pct, y in zip(all_percentages, all_y_positions):
             # Draw horizontal line
             cv2.line(self.annotated, (self.chart_left, y), (self.chart_right, y),
                     (200, 200, 200), 1)
-            # Draw green circle at left
-            cv2.circle(self.annotated, (self.chart_left, y), 4, (0, 255, 0), -1)
+            # Draw yellow circle at left for Y-axis markers
+            cv2.circle(self.annotated, (self.chart_left, y), 4, (0, 255, 255), -1)
+            # Draw green circle at right for comparison
+            cv2.circle(self.annotated, (self.chart_right, y), 4, (0, 255, 0), -1)
             # Add percentage label
             cv2.putText(self.annotated, f"{pct}%", (self.chart_left - 30, y + 5),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 0), 1)
