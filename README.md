@@ -17,14 +17,58 @@
 
 A comprehensive analysis tool for examining GitHub repository statistics across different technology categories including AI/ML, TypeScript, C# ASP.NET, and developer tools.
 
+## Problem Statement:
+
+**Data-Driven Decision making**
+Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. This can of course be ignored but skipping the need for data-driven research leaves freelancers, and IT professionals relying soley on intuition, constantly looking over their shoulder in a volatile/ speculative market conditions. 
+
+**Manual Researching data is time consuming.** 
+Sources such as ITJobsWatch tend to be viewed best individually. Grouping queries together does not always compare trends.
+
+**AI Researching leaves room for error**
+Cutting-edge Deep Research applications such as Gemini, Claud and ChatGPT, however impressive are observed to hallucinate statistics.
+
+## Solution:
+
+
+```mermaid
+flowchart LR
+    A["GitHub Repositories"] --> B["Rosalia"]
+    F["Office of National Statistics"] --> E["Market Data"]
+    G["ITJobswatch"] --> E
+    E --> B
+    B -- "API Update" --> C["Google Docs"]
+    C --> H["Human"]
+    C -- "Synchronise Plugin" --> D
+```
+
+Rosalia scrapes data from reputable sources and collates them into a Google Docs.
+
+This can be viewed by a human or synchronised with an AI Project.
+
 ## 🎯 Overview
 
-This project collects and analyzes repository statistics from 55+ popular open-source enterprise codebases, providing insights into:
+This project collects and analyzes 
+
+### Data Collection
+
+Statistics from 55+ popular open-source enterprise codebases, providing insights into:
 - Star counts and popularity trends (formatted as 12.3k, 1.2M for readability)
 - Fork and contributor statistics
 - Pull request activity
 - Technology stack distributions
 - Repository health metrics
+
+Statistics for emerging and collapsing markets in Technology Sector
+- Currently limited to UK-specific, with focus on London
+- ITJobswatch.co.uk
+- 10-15 year trends
+- Keywords: AI, ML, Web Development, Software Engineering, Data Science, Data Analytics, QA Testing
+- Languages: Python, C#, Typescript, 
+- Frameworks/ Technology: ASP.NET, Google Cloud, AWS, 
+
+Statistics from Office of National Statistics
+- understanding the Technology Sector and UK Economy on 10-15 year trend
 
 ## 🚀 Quick Start
 
