@@ -1,0 +1,1 @@
+"""ITJobsWatch trends data collection and parsing."""

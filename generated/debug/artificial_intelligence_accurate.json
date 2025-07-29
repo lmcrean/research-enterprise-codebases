@@ -1,0 +1,111 @@
+{
+  "method": "accurate_extraction_corrected_cropping",
+  "technology": "artificial-intelligence",
+  "total_points": 17,
+  "cropping_improvements": {
+    "top_percent": 9.0,
+    "bottom_percent": 88.0,
+    "left_percent": 8.0,
+    "right_percent": 95.0,
+    "note": "Reduced aggressive cropping to preserve chart data"
+  },
+  "data_points": [
+    {
+      "year": 2005,
+      "percentage": 1.4746376811594202
+    },
+    {
+      "year": 2006,
+      "percentage": 1.4782608695652173
+    },
+    {
+      "year": 2009,
+      "percentage": 1.358695652173913
+    },
+    {
+      "year": 2010,
+      "percentage": 1.3695652173913042
+    },
+    {
+      "year": 2011,
+      "percentage": 1.3804347826086956
+    },
+    {
+      "year": 2012,
+      "percentage": 1.4420289855072463
+    },
+    {
+      "year": 2013,
+      "percentage": 1.549407114624506
+    },
+    {
+      "year": 2014,
+      "percentage": 1.5108695652173914
+    },
+    {
+      "year": 2015,
+      "percentage": 1.9086956521739131
+    },
+    {
+      "year": 2016,
+      "percentage": 2.9082125603864735
+    },
+    {
+      "year": 2017,
+      "percentage": 4.138339920948616
+    },
+    {
+      "year": 2018,
+      "percentage": 4.834782608695653
+    },
+    {
+      "year": 2019,
+      "percentage": 5.418478260869565
+    },
+    {
+      "year": 2020,
+      "percentage": 5.172463768115942
+    },
+    {
+      "year": 2021,
+      "percentage": 5.356884057971015
+    },
+    {
+      "year": 2022,
+      "percentage": 8.206521739130435
+    },
+    {
+      "year": 2023,
+      "percentage": 11.73913043478261
+    }
+  ],
+  "validation_results": [
+    {
+      "year": 2017,
+      "expected": 0.9,
+      "actual": 4.138339920948616,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2017 is 0.9% with margin for error",
+      "difference": 3.2383399209486163
+    },
+    {
+      "year": 2019,
+      "expected": 3.4,
+      "actual": 5.418478260869565,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2019 is 3.4%",
+      "difference": 2.0184782608695655
+    },
+    {
+      "year": 2023,
+      "expected": 8.0,
+      "actual": 11.73913043478261,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2023 is ~8%",
+      "difference": 3.7391304347826093
+    }
+  ]
+}

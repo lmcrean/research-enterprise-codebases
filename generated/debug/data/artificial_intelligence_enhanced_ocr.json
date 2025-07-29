@@ -1,0 +1,103 @@
+{
+  "method": "enhanced_ocr_with_light_grey_masks",
+  "technology": "artificial-intelligence",
+  "total_points": 15,
+  "features": [
+    "OCR-friendly minimal cropping",
+    "Light grey horizontal mask detection",
+    "Light grey vertical mask detection",
+    "Enhanced grid line mapping",
+    "Preserved axis labels"
+  ],
+  "data_points": [
+    {
+      "year": 2006,
+      "percentage": 1.8870813397129187
+    },
+    {
+      "year": 2007,
+      "percentage": 1.9457735247208932
+    },
+    {
+      "year": 2010,
+      "percentage": 0.6124401913875598
+    },
+    {
+      "year": 2012,
+      "percentage": 1.875598086124402
+    },
+    {
+      "year": 2013,
+      "percentage": 1.9330143540669857
+    },
+    {
+      "year": 2014,
+      "percentage": 1.9846889952153108
+    },
+    {
+      "year": 2015,
+      "percentage": 2.070175438596491
+    },
+    {
+      "year": 2016,
+      "percentage": 2.499815973500184
+    },
+    {
+      "year": 2017,
+      "percentage": 3.7250978686385383
+    },
+    {
+      "year": 2018,
+      "percentage": 4.711323763955343
+    },
+    {
+      "year": 2019,
+      "percentage": 5.170408538829592
+    },
+    {
+      "year": 2020,
+      "percentage": 5.543403964456596
+    },
+    {
+      "year": 2021,
+      "percentage": 4.913875598086125
+    },
+    {
+      "year": 2022,
+      "percentage": 7.026175063326766
+    },
+    {
+      "year": 2023,
+      "percentage": 10.70494417862839
+    }
+  ],
+  "validation_results": [
+    {
+      "year": 2017,
+      "expected": 0.9,
+      "actual": 3.7250978686385383,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2017 is 0.9% with margin for error",
+      "difference": 2.8250978686385384
+    },
+    {
+      "year": 2019,
+      "expected": 3.4,
+      "actual": 5.170408538829592,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2019 is 3.4%",
+      "difference": 1.7704085388295918
+    },
+    {
+      "year": 2023,
+      "expected": 8.0,
+      "actual": 10.70494417862839,
+      "tolerance": 0.5,
+      "passed": false,
+      "description": "2023 is ~8%",
+      "difference": 2.7049441786283897
+    }
+  ]
+}

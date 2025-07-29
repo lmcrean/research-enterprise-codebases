@@ -1,0 +1,1 @@
+"""ITJobsWatch trends collection and visualization scripts."""
