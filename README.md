@@ -32,22 +32,55 @@ Cutting-edge Deep Research applications such as Gemini, Claud and ChatGPT, howev
 
 
 ```mermaid
+---
+config:
+  theme: redux-dark
+---
 flowchart LR
-    A["GitHub Repositories"] --> B["Rosalia"]
-    F["Office of National Statistics"] --> E["Market Data"]
+ subgraph s1["Outcome"]
+        Y["Correct Intuitions"]
+        n1["Correct Data"]
+        n2["Data-Driven Decisions"]
+        n3["Start Over"]
+        n4["Correct Data"]
+        n5["Burnout"]
+  end
+ subgraph s1["Outcome"]
+        X["Wrong intuitions"]
+        W["Wrong Data"]
+  end
+    A["Enterprise Repositories (Github)"] --> E["Market Data"]
+    A2["News"] --> E
+    F["Office of National Statistics"] --> E
     G["ITJobswatch"] --> E
-    E --> B
-    B -- "API Update" --> C["Google Docs"]
-    C -- "Reads" --> H["Human"]
-    C -- "Synchronise Plugin" --> D["AI (Claude Projects, etc.)"]
-    H -- "consults" --> D
-    E -- "time-consuming" --> H
-    E -- "hallucinates" --> D
-    style B fill:#90ee90,stroke:#333,stroke-width:2px,color:#111111
-    linkStyle 7 stroke:#ff0000,stroke-width:2px,color:#ff0000
-    linkStyle 8 stroke:#ff0000,stroke-width:2px,color:#ff0000
+    E -- scraped by --> B["Python"]
+    B -- curated by --> Z["Markdown Reports"]
+    AI1["AI"] -- consulted by --> H["Human"]
+    AI2["AI"] -- consulted by --> H2["Human"]
+    E -- "time-consuming, overwhelming" --> H3["Human"]
+    E -- hallucinates --> AI2
+    H3 --> n4
+    H2 --> W
+    Z -- Read by --> H & AI1
+    W --> X
+    H --> n1
+    n1 --> Y
+    X --> n3
+    Y --> n2
+    n4 --> n5
+    n5 --> n3
+    n4@{ shape: rect}
+    n5@{ shape: rect}
+    A@{ shape: cyl}
+    E@{ shape: rect}
+    A2@{ shape: cyl}
+    F@{ shape: cyl}
+    G@{ shape: cyl}
+    style n2 fill:#C8E6C9,color:#000000
+    style n3 fill:#FFCDD2,color:#000000
+
 ```
-***Diagram (above):*** Using Rosalia in research workflow ensures accurate data while saving time of manual research.
+***Diagram (above):*** Using Python Scraping and Markdown Reports in research workflow ensures accurate data while saving burnout of manual research.
 
 
 Rosalia scrapes data from reputable sources and collates them into a Google Docs.
