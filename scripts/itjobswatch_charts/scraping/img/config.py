@@ -13,6 +13,10 @@ SKILLS = [
     "software-development",
     "data-analyst",
     "data-science",
+    "data-scientist",
+    "generative-ai",
+    "rlhf",
+    "it",
     "aws",
     "gcp",
     "asp.net"
