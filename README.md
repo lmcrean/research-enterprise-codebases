@@ -38,9 +38,12 @@ flowchart LR
     G["ITJobswatch"] --> E
     E --> B
     B -- "API Update" --> C["Google Docs"]
-    C --> H["Human"]
-    C -- "Synchronise Plugin" --> D
+    C -- "Reads" --> H["Human"]
+    C -- "Synchronise Plugin" --> D["AI (Claude Projects, etc.)"]
+    H -- "consults" --> D
 ```
+***Diagram (above):*** Using Rosalia in research workflow ensures accurate data while saving time of manual research.
+
 
 Rosalia scrapes data from reputable sources and collates them into a Google Docs.
 
