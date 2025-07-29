@@ -287,5 +287,6 @@ This project is licensed under the MIT License.
 ## 🙏 Acknowledgments
 
 - GitHub API for providing comprehensive repository data
-- All the amazing open-source projects analyzed in this study
-- Automated with ❤️ using GitHub Actions
+- ITJobswatch.co.uk for UK IT Market Data
+- All the open-source projects analyzed in this study
+- Automated using GitHub Actions
