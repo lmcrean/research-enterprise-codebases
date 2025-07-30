@@ -96,10 +96,10 @@ class ReportGenerator:
 """
         
         # Write to file
-        with open('views/all.md', 'w', encoding='utf-8') as f:
+        with open('docs/all.md', 'w', encoding='utf-8') as f:
             f.write(content)
         
-        print("Generated views/all.md")
+        print("Generated docs/all.md")
     
     def generate_category_reports(self):
         """Generate individual category reports."""
@@ -173,7 +173,7 @@ class ReportGenerator:
 """
         
         # Write to file
-        filepath = f'views/{filename}'
+        filepath = f'docs/{filename}'
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
         
