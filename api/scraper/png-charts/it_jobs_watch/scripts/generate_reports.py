@@ -76,12 +76,12 @@ class ReportGenerator:
         content += f"""
 ## Top 10 Most Starred Repositories
 
-| Repository | Category | Stars | Forks | Contributors | Open PRs |
-|------------|----------|-------|-------|--------------|----------|
+| Repository | Category | Stars | Forks | Contributors | Open PRs | Top Languages |
+|------------|----------|-------|-------|--------------|----------|---------------|
 """
         
         for repo in top_repos_formatted:
-            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Field']} | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Pull Requests']} |\n"
+            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Field']} | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Pull Requests']} | {repo.get('Top Languages', 'N/A')} |\n"
         
         content += f"""
 ## Category Reports
@@ -143,12 +143,12 @@ class ReportGenerator:
 
 ## Repository Details
 
-| Repository | Stars | Forks | Contributors | Open Issues | Open PRs | Created | Last Active |
-|------------|-------|-------|--------------|-------------|----------|---------|-------------|
+| Repository | Stars | Forks | Contributors | Open Issues | Open PRs | Created | Last Active | Top Languages |
+|------------|-------|-------|--------------|-------------|----------|---------|-------------|---------------|
 """
         
         for repo in category_repos:
-            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Issues']} | {repo['Open Pull Requests']} | {repo['Date Created']} | {repo['Last Active']} |\n"
+            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Issues']} | {repo['Open Pull Requests']} | {repo['Date Created']} | {repo['Last Active']} | {repo.get('Top Languages', 'N/A')} |\n"
         
         content += f"""
 ## Key Insights

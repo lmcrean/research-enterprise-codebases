@@ -17,6 +17,7 @@ class RepositoryStats:
     open_prs: int
     created_at: str
     pushed_at: str
+    languages: str = ""  # Top 5 languages as formatted string
 
     def to_dict(self) -> Dict:
         """Convert to dictionary format."""
@@ -29,7 +30,8 @@ class RepositoryStats:
             'Open Issues': self.open_issues,
             'Open Pull Requests': self.open_prs,
             'Date Created': self.created_at,
-            'Last Active': self.pushed_at
+            'Last Active': self.pushed_at,
+            'Top Languages': self.languages
         }
 
 

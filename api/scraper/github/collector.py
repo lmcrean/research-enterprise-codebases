@@ -40,7 +40,9 @@ class RepositoryCollector:
                     self.results.append(stats)
                     contributors_text = str(stats.contributors) if stats.contributors >= 0 else "N/A"
                     prs_text = str(stats.open_prs) if stats.open_prs >= 0 else "N/A"
-                    print(f"✅ {stats.stars} stars, {contributors_text} contributors, {prs_text} PRs")
+                    languages_text = stats.languages[:50] + "..." if len(stats.languages) > 50 else stats.languages
+                    languages_text = languages_text if languages_text else "N/A"
+                    print(f"✅ {stats.stars} stars, {contributors_text} contributors, {prs_text} PRs, {languages_text}")
                 else:
                     print("❌ Failed")
                 
