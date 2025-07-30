@@ -90,7 +90,7 @@ def main():
     """Main collection script."""
     # Load environment variables
     load_dotenv()
-    github_token = os.environ.get('GITHUB_TOKEN')  # Re-enable authentication
+    github_token = None  # Disable authentication to avoid 401 errors
     
     # Load repository configuration
     import yaml
