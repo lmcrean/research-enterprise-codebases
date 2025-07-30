@@ -90,7 +90,7 @@ def main():
     """Main collection script."""
     # Load environment variables
     load_dotenv()
-    github_token = None  # Disable authentication for testing
+    github_token = os.environ.get('GITHUB_TOKEN')  # Re-enable authentication
     
     # Load repository configuration
     import yaml
