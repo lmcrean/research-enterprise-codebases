@@ -4,7 +4,10 @@ import requests
 import time
 import re
 from typing import Optional, Dict, Any
-from .models import RepositoryStats
+try:
+    from .models import RepositoryStats
+except ImportError:
+    from models import RepositoryStats
 
 
 class GitHubClient:
@@ -24,13 +27,13 @@ class GitHubClient:
             response = requests.get(repo_url, headers=self.headers)
             
             if response.status_code == 404:
-                print(f"⚠️  Repository {owner}/{repo} not found (404)")
+                print(f"Warning: Repository {owner}/{repo} not found (404)")
                 return None
             elif response.status_code == 403:
-                print(f"⚠️  Access denied to {owner}/{repo} (403 - private repo?)")
+                print(f"Warning: Access denied to {owner}/{repo} (403 - private repo?)")
                 return None
             elif response.status_code == 429:
-                print(f"⚠️  Rate limit exceeded. Waiting 60 seconds...")
+                print(f"Warning: Rate limit exceeded. Waiting 60 seconds...")
                 time.sleep(60)
                 return self.get_repo_stats(owner, repo)
             
@@ -56,7 +59,7 @@ class GitHubClient:
             )
             
         except Exception as e:
-            print(f"❌ Error fetching {owner}/{repo}: {str(e)}")
+            print(f"Error fetching {owner}/{repo}: {str(e)}")
             return None
     
     def _get_contributors_count(self, owner: str, repo: str) -> int:

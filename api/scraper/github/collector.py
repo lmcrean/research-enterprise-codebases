@@ -7,8 +7,12 @@ import json
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
-from api.github.client import GitHubClient
-from api.github.models import RepositoryStats, CollectionMetadata
+try:
+    from .client import GitHubClient
+    from .models import RepositoryStats, CollectionMetadata
+except ImportError:
+    from client import GitHubClient
+    from models import RepositoryStats, CollectionMetadata
 
 
 class RepositoryCollector:
@@ -26,7 +30,7 @@ class RepositoryCollector:
         current_repo = 0
         
         for field, repo_list in repositories_config.items():
-            print(f"\n🔍 Processing {field} repositories...")
+            print(f"\nProcessing {field} repositories...")
             
             for repo_path in repo_list:
                 current_repo += 1
@@ -42,9 +46,9 @@ class RepositoryCollector:
                     prs_text = str(stats.open_prs) if stats.open_prs >= 0 else "N/A"
                     languages_text = stats.languages[:50] + "..." if len(stats.languages) > 50 else stats.languages
                     languages_text = languages_text if languages_text else "N/A"
-                    print(f"✅ {stats.stars} stars, {contributors_text} contributors, {prs_text} PRs, {languages_text}")
+                    print(f"Success: {stats.stars} stars, {contributors_text} contributors, {prs_text} PRs, {languages_text}")
                 else:
-                    print("❌ Failed")
+                    print("Failed")
                 
                 time.sleep(0.1)  # Rate limiting
         
@@ -53,7 +57,7 @@ class RepositoryCollector:
     def save_to_csv(self, filepath: str) -> None:
         """Save collected data to CSV file."""
         if not self.results:
-            print("❌ No data to save")
+            print("No data to save")
             return
         
         # Convert to DataFrame
@@ -62,7 +66,7 @@ class RepositoryCollector:
         
         # Save to CSV
         df.to_csv(filepath, index=False)
-        print(f"💾 Data saved to {filepath}")
+        print(f"Data saved to {filepath}")
     
     def save_metadata(self, filepath: str, collection_time: float) -> None:
         """Save collection metadata to JSON file."""
@@ -79,21 +83,21 @@ class RepositoryCollector:
         with open(filepath, 'w') as f:
             json.dump(metadata.__dict__, f, indent=2)
         
-        print(f"📋 Metadata saved to {filepath}")
+        print(f"Metadata saved to {filepath}")
 
 
 def main():
     """Main collection script."""
     # Load environment variables
     load_dotenv()
-    github_token = os.environ.get('GITHUB_TOKEN')
+    github_token = None  # Disable authentication for testing
     
     # Load repository configuration
     import yaml
-    with open('api/config/repositories.yml', 'r') as f:
+    with open('config/repositories.yml', 'r') as f:
         repositories_config = yaml.safe_load(f)['repositories']
     
-    print("🚀 Starting data collection...")
+    print("Starting data collection...")
     print(f"Authentication: {'Enabled' if github_token else 'Disabled (60 requests/hour limit)'}")
     print("="*50)
     
@@ -104,13 +108,13 @@ def main():
     end_time = time.time()
     
     print("\n" + "="*50)
-    print(f"✅ Data collection completed!")
-    print(f"📊 Successfully collected data for {len(results)} repositories")
-    print(f"⏱️  Total time: {end_time - start_time:.2f} seconds")
+    print(f"Data collection completed!")
+    print(f"Successfully collected data for {len(results)} repositories")
+    print(f"Total time: {end_time - start_time:.2f} seconds")
     
     # Save results
-    collector.save_to_csv('data/raw/github_repository_stats.csv')
-    collector.save_metadata('data/raw/github_stats_metadata.json', end_time - start_time)
+    collector.save_to_csv('../../../data/scraped/github/github_repository_stats.csv')
+    collector.save_metadata('../../../data/scraped/github/github_stats_metadata.json', end_time - start_time)
 
 
 if __name__ == '__main__':

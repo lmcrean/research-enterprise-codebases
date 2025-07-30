@@ -1,56 +1,14 @@
-Name,Field,Stars,Forks,Contributors,Open Issues,Open Pull Requests,Date Created,Last Active
-huggingface/trl,AI/ML,14770,2069,361,501,73,2020-03-27,2025-07-28
-Significant-Gravitas/AutoGPT,AI/ML,177289,45903,789,217,67,2023-03-16,2025-07-28
-open-webui/open-webui,AI/ML,104221,14014,651,274,80,2023-10-06,2025-07-28
-comfyanonymous/ComfyUI,AI/ML,83729,9285,229,2604,184,2023-01-17,2025-07-28
-langchain-ai/langchain,AI/ML,112416,18355,3431,277,85,2022-10-17,2025-07-28
-huggingface/transformers,AI/ML,147577,29810,3440,1898,838,2018-10-29,2025-07-28
-ollama/ollama,AI/ML,147810,12552,506,1956,324,2023-06-26,2025-07-28
-vllm-project/vllm,AI/ML,53401,8976,1323,2691,870,2023-02-09,2025-07-28
-n8n-io/n8n,AI/ML,124511,37786,452,984,417,2019-06-22,2025-07-28
-iterative/dvc,AI/ML,14705,1240,316,234,2,2017-03-04,2025-07-28
-langgenius/dify,AI/ML,108758,16552,898,764,85,2023-04-12,2025-07-28
-HumanSignal/label-studio,AI/ML,23922,2949,145,1044,82,2019-06-19,2025-07-28
-microsoft/ML-For-Beginners,AI/ML,75765,16747,139,16,10,2021-03-03,2025-07-18
-cleanlab/cleanlab,AI/ML,10743,837,54,102,24,2018-05-11,2025-07-11
-voxel51/fiftyone,AI/ML,9745,655,157,608,87,2020-04-22,2025-07-28
-fastai/fastbook,AI/ML,23468,9040,132,169,63,2020-02-28,2024-08-16
-pytorch/pytorch,AI/ML,91837,24788,5778,16663,1295,2016-08-13,2025-07-28
-tensorflow/tensorflow,AI/ML,190937,74768,4903,1502,622,2015-11-07,2025-07-28
-scikit-learn/scikit-learn,AI/ML,62800,26086,3358,2164,584,2010-08-17,2025-07-28
-pandas-dev/pandas,AI/ML,46115,18731,3925,3737,83,2010-08-24,2025-07-28
-nestjs/nest,TypeScript,71981,7960,616,64,35,2017-02-04,2025-07-28
-prisma/prisma,TypeScript,42967,1805,305,2334,27,2019-06-20,2025-07-28
-adonisjs/core,TypeScript,18068,653,70,3,1,2015-08-15,2025-07-17
-typeorm/typeorm,TypeScript,35594,6423,1177,2468,135,2016-02-29,2025-07-28
-sequelize/sequelize,TypeScript,30098,4297,1243,985,95,2010-07-22,2025-07-28
-trpc/trpc,TypeScript,38003,1395,474,185,45,2020-07-18,2025-07-22
-fastify/fastify,TypeScript,34231,2461,830,117,42,2016-09-28,2025-07-28
-taskforcesh/bullmq,TypeScript,7290,486,173,313,60,2018-12-19,2025-07-27
-mikro-orm/mikro-orm,TypeScript,8405,584,288,57,15,2018-03-15,2025-07-28
-drizzle-team/drizzle-orm,TypeScript,29465,947,126,1657,256,2021-06-24,2025-07-28
-kysely-org/kysely,TypeScript,12395,325,135,137,19,2021-02-22,2025-07-26
-colinhacks/zod,TypeScript,39248,1549,412,320,79,2020-03-07,2025-07-25
-winstonjs/winston,TypeScript,23836,1833,407,514,53,2010-12-29,2025-07-14
-pinojs/pino,TypeScript,15843,911,352,143,16,2016-02-16,2025-07-27
-helmetjs/helmet,TypeScript,10465,382,52,2,0,2012-02-01,2025-07-22
-moleculerjs/moleculer,TypeScript,6301,595,156,71,13,2017-02-17,2025-06-25
-typestack/routing-controllers,TypeScript,4479,402,88,91,12,2015-09-30,2025-07-22
-lukeautry/tsoa,TypeScript,3842,525,212,142,15,2016-06-17,2025-07-22
-tsedio/tsed,TypeScript,2997,294,175,47,16,2016-02-21,2025-07-25
-lobehub/lobe-chat,TypeScript,63877,13276,257,946,97,2023-05-21,2025-07-28
-vercel/ai,TypeScript,16085,2628,326,644,158,2023-05-23,2025-07-28
-dotnet/aspnetcore,C# ASP.NET,36917,10415,1526,3807,120,2014-03-11,2025-07-28
-aspnetrun/run-aspnetcore-microservices,C# ASP.NET,3052,1650,1,41,11,2019-04-14,2025-07-11
-DapperLib/Dapper,C# ASP.NET,17996,3681,238,527,72,2011-04-14,2025-06-01
-jasontaylordev/CleanArchitecture,C# ASP.NET,18570,3924,94,19,5,2019-10-07,2025-07-28
-dotnet/efcore,C# ASP.NET,14229,3285,413,2435,36,2014-01-23,2025-07-28
-App-vNext/Polly,C# ASP.NET,13877,1260,122,12,4,2013-05-05,2025-07-24
-dotnet/orleans,C# ASP.NET,10441,2092,420,636,39,2014-12-19,2025-07-24
-HangfireIO/Hangfire,C# ASP.NET,9792,1731,176,939,51,2013-08-06,2025-07-25
-nopSolutions/nopCommerce,C# ASP.NET,9720,5617,242,163,22,2014-04-09,2025-07-28
-ThreeMammals/Ocelot,C# ASP.NET,8587,1666,183,70,25,2016-06-29,2025-07-26
-OrchardCMS/OrchardCore,C# ASP.NET,7774,2481,316,940,37,2014-11-19,2025-07-28
-dotnetcore/CAP,C# ASP.NET,6930,1315,129,5,2,2016-12-14,2025-07-28
-gothinkster/aspnetcore-realworld-example-app,C# ASP.NET,2022,575,29,18,0,2017-05-16,2025-07-08
-karpathy/nn-zero-to-hero,Other,15107,2120,2,43,20,2022-09-08,2024-08-18
+Name,Field,Stars,Forks,Contributors,Open Issues,Open Pull Requests,Date Created,Last Active,Top Languages
+tensorflow/tensorflow,AI/ML,190964,74760,4904,1498,626,2015-11-07,2025-07-30,"C++ (56.0%), Python (25.6%), MLIR (6.2%), HTML (4.3%), Starlark (4.1%)"
+pytorch/pytorch,AI/ML,91892,24802,5779,16708,1320,2016-08-13,2025-07-30,"Python (58.3%), C++ (33.6%), Cuda (2.9%), C (1.4%), Objective-C++ (1.1%)"
+scikit-learn/scikit-learn,AI/ML,62821,26094,3358,2155,579,2010-08-17,2025-07-30,"Python (92.5%), Cython (5.4%), C++ (1.1%), Shell (0.3%), C (0.3%)"
+nestjs/nest,TypeScript,72008,7960,616,65,36,2017-02-04,2025-07-30,"TypeScript (99.9%), JavaScript (0.1%), Shell (0.0%)"
+prisma/prisma,TypeScript,42977,1806,308,2324,24,2019-06-20,2025-07-30,"TypeScript (98.7%), JavaScript (1.2%), Shell (0.1%), Dockerfile (0.0%), PLpgSQL (0.0%)"
+adonisjs/core,TypeScript,18075,652,70,4,1,2015-08-15,2025-07-17,"TypeScript (99.8%), JavaScript (0.2%)"
+typeorm/typeorm,TypeScript,35599,6421,1177,2467,134,2016-02-29,2025-07-29,"TypeScript (99.8%), JavaScript (0.2%)"
+sequelize/sequelize,TypeScript,30096,4297,1243,981,91,2010-07-22,2025-07-30,"TypeScript (50.6%), JavaScript (49.1%), Shell (0.2%), Batchfile (0.0%)"
+trpc/trpc,TypeScript,38039,1394,474,185,45,2020-07-18,2025-07-22,"TypeScript (80.9%), MDX (17.0%), JavaScript (1.1%), CSS (1.0%)"
+fastify/fastify,TypeScript,34246,2461,830,118,44,2016-09-28,2025-07-30,"JavaScript (91.2%), TypeScript (8.7%), Shell (0.1%)"
+taskforcesh/bullmq,TypeScript,7299,487,174,314,60,2018-12-19,2025-07-30,"TypeScript (82.3%), Lua (8.9%), Python (8.4%), JavaScript (0.4%), Shell (0.1%)"
+mikro-orm/mikro-orm,TypeScript,8408,584,288,58,15,2018-03-15,2025-07-30,"TypeScript (99.2%), JavaScript (0.8%), Batchfile (0.0%)"
+drizzle-team/drizzle-orm,TypeScript,29497,949,127,1661,100,2021-06-24,2025-07-30,

@@ -3,26 +3,9 @@
 
 repositories:
   AI/ML:
-    - huggingface/trl
-    - Significant-Gravitas/AutoGPT
-    - open-webui/open-webui
-    - comfyanonymous/ComfyUI
-    - langchain-ai/langchain
-    - huggingface/transformers
-    - ollama/ollama
-    - vllm-project/vllm
-    - n8n-io/n8n
-    - iterative/dvc
-    - langgenius/dify
-    - HumanSignal/label-studio
-    - microsoft/ML-For-Beginners
-    - cleanlab/cleanlab
-    - voxel51/fiftyone
-    - fastai/fastbook
-    - pytorch/pytorch
     - tensorflow/tensorflow
+    - pytorch/pytorch
     - scikit-learn/scikit-learn
-    - pandas-dev/pandas
 
   TypeScript:
     - nestjs/nest
