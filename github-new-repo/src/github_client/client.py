@@ -4,10 +4,7 @@ import requests
 import time
 import re
 from typing import Optional, Dict, Any
-try:
-    from .models import RepositoryStats
-except ImportError:
-    from models import RepositoryStats
+from .models import RepositoryStats
 
 
 class GitHubClient:

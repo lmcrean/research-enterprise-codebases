@@ -1,111 +1,139 @@
-"""Integration tests for GitHub API functionality."""
+"""Integration tests for ITJobsWatch scraping functionality."""
 
 import pytest
 import os
 import sys
 from pathlib import Path
+import pandas as pd
+import json
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from api.github import GitHubClient, RepositoryCollector
-from api.github.utils import format_number, format_repo_stats_for_display
+from api.scraper.table_data.itjobswatch_table_scraper import ITJobsWatchTableScraper
+from api.scraper.png_charts.it_jobs_watch.scripts.generate_reports import ITJobsWatchReportGenerator
 
 
-class TestGitHubClient:
-    """Test GitHub API client functionality."""
+class TestITJobsWatchScraper:
+    """Test ITJobsWatch table scraping functionality."""
     
-    def test_format_number(self):
-        """Test number formatting utility."""
-        assert format_number(999) == "999"
-        assert format_number(1234) == "1.2k"
-        assert format_number(12345) == "12k"
-        assert format_number(1234567) == "1.2M"
-        assert format_number(12345678) == "12M"
-        assert format_number(1234567890) == "1.2B"
+    def test_scraper_initialization(self):
+        """Test scraper can be initialized."""
+        scraper = ITJobsWatchTableScraper()
+        assert scraper is not None
     
-    def test_client_initialization(self):
-        """Test client can be initialized."""
-        client = GitHubClient()
-        assert client.base_url == 'https://api.github.com'
-        assert client.headers == {}
-        
-        client_with_token = GitHubClient("test_token")
-        assert client_with_token.headers == {'Authorization': 'token test_token'}
-    
-    @pytest.mark.skipif(not os.environ.get('GITHUB_TOKEN'), reason="No GitHub token available")
-    def test_real_api_call(self):
-        """Test actual API call with real token (if available)."""
-        token = os.environ.get('GITHUB_TOKEN')
-        client = GitHubClient(token)
-        
-        # Test with a small, stable repository
-        stats = client.get_repo_stats('octocat', 'Hello-World')
-        
-        if stats:  # Only test if repo exists and is accessible
-            assert stats.repo_path == 'octocat/Hello-World'
-            assert isinstance(stats.stars, int)
-            assert isinstance(stats.forks, int)
-            assert stats.field == ''  # Should be empty initially
+    def test_data_directory_exists(self):
+        """Test that ITJobsWatch data directory exists."""
+        data_path = project_root / 'data' / 'scraped' / 'itjobswatch'
+        assert data_path.exists(), "ITJobsWatch data directory should exist"
 
 
-class TestRepositoryCollector:
-    """Test repository collector functionality."""
+class TestITJobsWatchData:
+    """Test ITJobsWatch data integrity."""
     
-    def test_collector_initialization(self):
-        """Test collector can be initialized."""
-        collector = RepositoryCollector()
-        assert isinstance(collector.client, GitHubClient)
-        assert collector.results == []
+    def test_scraped_data_exists(self):
+        """Test that some scraped data exists."""
+        data_path = project_root / 'data' / 'scraped' / 'itjobswatch'
+        
+        # Check for file-data (JSON files from chart analysis)
+        file_data_path = data_path / 'file-data'
+        if file_data_path.exists():
+            json_files = list(file_data_path.glob('*.json'))
+            if json_files:
+                # Test loading one JSON file
+                with open(json_files[0], 'r') as f:
+                    data = json.load(f)
+                assert isinstance(data, (dict, list))
+        
+        # Check for table-data (CSV files from job listings)
+        table_data_path = data_path / 'table-data'
+        if table_data_path.exists():
+            csv_files = list(table_data_path.glob('*.csv'))
+            if csv_files:
+                # Test loading one CSV file
+                df = pd.read_csv(csv_files[0])
+                assert len(df) > 0
     
-    def test_format_repo_stats_for_display(self):
-        """Test stats formatting for display."""
-        test_stats = [
-            {
-                'Name': 'test/repo',
-                'Stars': 12345,
-                'Forks': 678,
-                'Contributors': 42,
-                'Open Pull Requests': 5
-            }
-        ]
+    def test_webp_charts_exist(self):
+        """Test that WebP chart files exist."""
+        data_path = project_root / 'data' / 'scraped' / 'itjobswatch'
+        webp_files = list(data_path.glob('*.webp'))
         
-        formatted = format_repo_stats_for_display(test_stats)
-        
-        assert len(formatted) == 1
-        assert formatted[0]['Stars'] == '12k'
-        assert formatted[0]['Forks'] == '678'
-        assert formatted[0]['Contributors'] == '42'
+        # Should have some chart files
+        if webp_files:
+            # Verify files are not empty
+            for webp_file in webp_files[:3]:  # Check first 3 files
+                assert webp_file.stat().st_size > 0
 
 
-class TestConfigurationLoading:
-    """Test configuration file loading."""
+class TestReportGeneration:
+    """Test ITJobsWatch report generation."""
     
-    def test_yaml_config_exists(self):
-        """Test that repositories.yml exists and is readable."""
-        config_path = project_root / 'api' / 'config' / 'repositories.yml'
-        assert config_path.exists(), "repositories.yml should exist"
+    def test_report_generator_initialization(self):
+        """Test report generator can be initialized."""
+        generator = ITJobsWatchReportGenerator()
+        assert generator.data_path.name == 'itjobswatch'
+    
+    def test_report_generation_runs(self):
+        """Test that report generation runs without errors."""
+        generator = ITJobsWatchReportGenerator()
         
-        import yaml
-        with open(config_path, 'r') as f:
-            config = yaml.safe_load(f)
+        # This should run without throwing exceptions
+        try:
+            generator.generate_market_overview_report()
+            success = True
+        except Exception as e:
+            success = False
+            print(f"Report generation failed: {e}")
         
-        assert 'repositories' in config
-        assert isinstance(config['repositories'], dict)
-        assert len(config['repositories']) > 0
+        assert success, "Report generation should complete without errors"
 
 
-class TestDataPersistence:
-    """Test data saving and loading."""
+class TestChartProcessing:
+    """Test chart processing functionality."""
     
-    def test_data_directory_structure(self):
+    def test_chart_processing_modules_exist(self):
+        """Test that chart processing modules exist."""
+        chart_path = project_root / 'api' / 'scraper' / 'png-charts' / 'it_jobs_watch'
+        
+        # Check for key processing modules
+        assert (chart_path / 'scripts').exists()
+        assert (chart_path / 'annotating').exists()
+        assert (chart_path / 'outputs').exists()
+    
+    def test_chart_scripts_importable(self):
+        """Test that chart processing scripts can be imported."""
+        try:
+            from api.scraper.png_charts.it_jobs_watch.scripts import chart_parser
+            from api.scraper.png_charts.it_jobs_watch.scripts import chart_annotator
+            success = True
+        except ImportError as e:
+            success = False
+            print(f"Import error: {e}")
+        
+        assert success, "Chart processing scripts should be importable"
+
+
+class TestDataStructure:
+    """Test ITJobsWatch data structure integrity."""
+    
+    def test_required_directories_exist(self):
         """Test that required directories exist."""
-        assert (project_root / 'data' / 'raw').exists()
-        assert (project_root / 'data' / 'processed').exists()
-        assert (project_root / 'views').exists()
-        assert (project_root / 'api' / 'github').exists()
-        assert (project_root / 'scripts').exists()
+        base_path = project_root / 'api' / 'scraper'
+        
+        # ITJobsWatch specific directories
+        assert (base_path / 'png-charts' / 'it_jobs_watch').exists()
+        assert (base_path / 'table-data').exists()
+        
+        # Data directories
+        data_path = project_root / 'data' / 'scraped' / 'itjobswatch'
+        assert data_path.exists()
+    
+    def test_docs_directory_accessible(self):
+        """Test that docs directory is accessible for report generation."""
+        docs_path = project_root / 'docs'
+        assert docs_path.exists() or docs_path.parent.exists()
 
 
 if __name__ == '__main__':

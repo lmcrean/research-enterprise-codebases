@@ -1,4 +1,4 @@
-name: Generate ITJobsWatch Reports
+name: Collect GitHub Stats
 
 on:
   push:
@@ -30,25 +30,27 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Run ITJobsWatch tests
+    - name: Run tests
       run: |
-        cd integration && python -m pytest tests/ -v
+        python -m pytest tests/ -v
     
-    - name: Generate ITJobsWatch reports
+    - name: Run data collection
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        python api/scraper/png-charts/it_jobs_watch/scripts/generate_reports.py
+        python scripts/run_collection.py
     
-    - name: Validate report generation
+    - name: Generate reports
       run: |
-        echo "ITJobsWatch reports generated successfully"
+        echo "Reports generation moved to main Rosalia repo"
     
-    - name: Verify reports were generated correctly
+    - name: Verify data collection
       run: |
-        cd integration && python -m pytest tests/test_report_generation.py::TestReportValidation::test_live_data_report_generation -v
+        python -m pytest tests/test_integration.py -v
     
     - name: Commit and push if changed
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git add data/ docs/
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update reports [skip ci]" && git push)
+        git add data/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update repository statistics [skip ci]" && git push)

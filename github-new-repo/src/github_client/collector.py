@@ -7,12 +7,8 @@ import json
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
-try:
-    from .client import GitHubClient
-    from .models import RepositoryStats, CollectionMetadata
-except ImportError:
-    from client import GitHubClient
-    from models import RepositoryStats, CollectionMetadata
+from .client import GitHubClient
+from .models import RepositoryStats, CollectionMetadata
 
 
 class RepositoryCollector:
@@ -94,7 +90,7 @@ def main():
     
     # Load repository configuration
     import yaml
-    with open('config/repositories.yml', 'r') as f:
+    with open('src/config/repositories.yml', 'r') as f:
         repositories_config = yaml.safe_load(f)['repositories']
     
     print("Starting data collection...")
@@ -113,8 +109,8 @@ def main():
     print(f"Total time: {end_time - start_time:.2f} seconds")
     
     # Save results
-    collector.save_to_csv('../../../data/scraped/github/github_repository_stats.csv')
-    collector.save_metadata('../../../data/scraped/github/github_stats_metadata.json', end_time - start_time)
+    collector.save_to_csv('data/output/github_repository_stats.csv')
+    collector.save_metadata('data/output/github_stats_metadata.json', end_time - start_time)
 
 
 if __name__ == '__main__':

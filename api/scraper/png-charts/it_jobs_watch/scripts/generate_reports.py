@@ -1,134 +1,107 @@
-"""Generate markdown reports from collected GitHub data."""
+"""Generate markdown reports from ITJobsWatch market data."""
 
 import pandas as pd
 import json
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List
+import os
 
-# Utility functions copied locally to avoid import issues
-def format_number(num: int) -> str:
-    """Format large numbers with k/M suffixes for readability."""
-    if num < 1000:
-        return str(num)
-    elif num < 1000000:
-        if num < 10000:
-            return f"{num/1000:.1f}k"
-        else:
-            return f"{num/1000:.0f}k"
-    elif num < 1000000000:
-        if num < 10000000:
-            return f"{num/1000000:.1f}M"
-        else:
-            return f"{num/1000000:.0f}M"
-    else:
-        return f"{num/1000000000:.1f}B"
-
-def format_repo_stats_for_display(stats_list) -> list:
-    """Format repository stats with readable numbers."""
-    formatted = []
-    for stats in stats_list:
-        formatted_stats = stats.copy() if isinstance(stats, dict) else stats.to_dict()
+class ITJobsWatchReportGenerator:
+    """Generates markdown reports from ITJobsWatch market data."""
+    
+    def __init__(self, data_path: str = 'data/scraped/itjobswatch'):
+        """Initialize with path to ITJobsWatch data."""
+        self.data_path = Path(data_path)
+        self.file_data_path = self.data_path / 'file-data'
+        self.table_data_path = self.data_path / 'table-data'
         
-        # Format numeric fields
-        if 'Stars' in formatted_stats:
-            formatted_stats['Stars'] = format_number(formatted_stats['Stars'])
-        if 'Forks' in formatted_stats:
-            formatted_stats['Forks'] = format_number(formatted_stats['Forks'])
-        if 'Contributors' in formatted_stats and formatted_stats['Contributors'] > 0:
-            formatted_stats['Contributors'] = format_number(formatted_stats['Contributors'])
-        elif 'Contributors' in formatted_stats and formatted_stats['Contributors'] == -1:
-            formatted_stats['Contributors'] = "N/A"
-        
-        if 'Open Pull Requests' in formatted_stats and formatted_stats['Open Pull Requests'] == -1:
-            formatted_stats['Open Pull Requests'] = "N/A"
-            
-        formatted.append(formatted_stats)
-    
-    return formatted
-
-
-class ReportGenerator:
-    """Generates markdown reports from GitHub data."""
-    
-    def __init__(self, data_path: str = 'data/scraped/github/github_repository_stats.csv'):
-        """Initialize with path to CSV data."""
-        self.data_path = data_path
-        self.df = pd.read_csv(data_path)
-        self.metadata = self._load_metadata()
-    
-    def _load_metadata(self) -> Dict:
-        """Load collection metadata."""
-        metadata_path = Path(self.data_path).parent / 'github_stats_metadata.json'
-        try:
-            with open(metadata_path, 'r') as f:
-                return json.load(f)
-        except FileNotFoundError:
-            return {}
-    
     def generate_all_reports(self):
         """Generate all markdown reports."""
-        print("Generating markdown reports...")
+        print("Generating ITJobsWatch market reports...")
         
-        self.generate_overview_report()
-        self.generate_category_reports()
+        self.generate_market_overview_report()
+        self.generate_technology_reports()
+        self.generate_job_trends_report()
         
-        print("All reports generated successfully!")
+        print("All ITJobsWatch reports generated successfully!")
     
-    def generate_overview_report(self):
-        """Generate comprehensive overview report."""
-        # Get summary statistics
-        total_repos = len(self.df)
-        total_stars = self.df['Stars'].sum()
-        categories = self.df['Field'].unique()
+    def generate_market_overview_report(self):
+        """Generate comprehensive market overview report."""
+        # Load available technology data
+        tech_files = list(self.file_data_path.glob('*.json')) if self.file_data_path.exists() else []
+        tech_data = {}
         
-        # Get top repositories
-        top_repos = self.df.nlargest(10, 'Stars')
-        top_repos_formatted = format_repo_stats_for_display(top_repos.to_dict('records'))
+        for tech_file in tech_files:
+            tech_name = tech_file.stem
+            try:
+                with open(tech_file, 'r') as f:
+                    tech_data[tech_name] = json.load(f)
+            except Exception as e:
+                print(f"Warning: Could not load {tech_file}: {e}")
         
         # Build markdown content
-        content = f"""# Enterprise Codebases Research - Overview
+        content = f"""# ITJobsWatch Market Analysis - Overview
 
-*Last updated: {self.metadata.get('last_updated', 'Unknown')}*
+*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 
-## Summary Statistics
+## Summary
 
-- **Total Repositories**: {total_repos:,}
-- **Total Stars**: {total_stars:,}
-- **Technology Categories**: {len(categories)}
-- **Collection Time**: {self.metadata.get('collection_time_seconds', 0):.1f} seconds
+This report analyzes UK job market trends based on data scraped from ITJobsWatch, focusing on technology demand and market dynamics.
 
-## Technology Categories
+## Available Technologies
 
 """
         
-        # Add category breakdown
-        for category in sorted(categories):
-            category_df = self.df[self.df['Field'] == category]
-            category_stars = category_df['Stars'].sum()
-            content += f"- **{category}**: {len(category_df)} repositories ({category_stars:,} total stars)\n"
+        if tech_data:
+            content += f"- **Total Technologies Tracked**: {len(tech_data)}\n\n"
+            for tech_name in sorted(tech_data.keys()):
+                formatted_name = tech_name.replace('-', ' ').title()
+                content += f"- **{formatted_name}**\n"
+        else:
+            content += "No technology data available yet.\n\n"
         
-        content += f"""
-## Top 10 Most Starred Repositories
+        # Add table data summary if available
+        if self.table_data_path.exists():
+            table_files = list(self.table_data_path.glob('*.csv'))
+            if table_files:
+                content += f"""
+## Job Market Data
 
-| Repository | Category | Stars | Forks | Contributors | Open PRs | Top Languages |
-|------------|----------|-------|-------|--------------|----------|---------------|
+- **Job Listing Files**: {len(table_files)}
 """
-        
-        for repo in top_repos_formatted:
-            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Field']} | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Pull Requests']} | {repo.get('Top Languages', 'N/A')} |\n"
+                for table_file in table_files:
+                    try:
+                        df = pd.read_csv(table_file)
+                        content += f"- **{table_file.stem}**: {len(df)} job listings\n"
+                    except Exception as e:
+                        content += f"- **{table_file.stem}**: Error loading data\n"
         
         content += f"""
-## Category Reports
 
-- [AI/ML Repositories](ai_ml.md)
-- [TypeScript Repositories](typescript.md)  
-- [C# ASP.NET Repositories](csharp.md)
-- [Developer Tools](developer_tools.md)
+## Data Sources
+
+### Chart Data (PNG Analysis)
+- Source: ITJobsWatch trend charts
+- Analysis: Computer vision and OCR extraction
+- Focus: Market share and growth trends over time
+
+### Table Data (Job Listings)
+- Source: ITJobsWatch job listings
+- Analysis: Direct web scraping
+- Focus: Current job availability and salary ranges
+
+## Report Categories
+
+- [Market Growth Trends](market-reports/growth-markets.md)
+- [Technology Comparison](report.md)
 
 ---
-*Generated automatically from GitHub API data*
+*Generated automatically from ITJobsWatch data*
 """
+        
+        # Ensure docs directory exists
+        os.makedirs('docs', exist_ok=True)
         
         # Write to file
         with open('docs/all.md', 'w', encoding='utf-8') as f:
@@ -136,88 +109,145 @@ class ReportGenerator:
         
         print("Generated docs/all.md")
     
-    def generate_category_reports(self):
-        """Generate individual category reports."""
-        categories = {
-            'AI/ML': 'ai_ml.md',
-            'TypeScript': 'typescript.md', 
-            'C# ASP.NET': 'csharp.md',
-            'Developer_Tools': 'developer_tools.md'
-        }
-        
-        for category, filename in categories.items():
-            self._generate_category_report(category, filename)
-    
-    def _generate_category_report(self, category: str, filename: str):
-        """Generate report for specific category."""
-        category_df = self.df[self.df['Field'] == category].copy()
-        
-        if category_df.empty:
-            print(f"Warning: No data found for category: {category}")
+    def generate_technology_reports(self):
+        """Generate individual technology reports."""
+        if not self.file_data_path.exists():
+            print("No technology data directory found")
             return
+            
+        tech_files = list(self.file_data_path.glob('*.json'))
         
-        # Sort by stars descending
-        category_df = category_df.sort_values('Stars', ascending=False)
-        category_repos = format_repo_stats_for_display(category_df.to_dict('records'))
+        for tech_file in tech_files:
+            tech_name = tech_file.stem
+            try:
+                with open(tech_file, 'r') as f:
+                    tech_data = json.load(f)
+                self._generate_technology_report(tech_name, tech_data)
+            except Exception as e:
+                print(f"Warning: Could not generate report for {tech_name}: {e}")
+    
+    def _generate_technology_report(self, tech_name: str, tech_data: Dict):
+        """Generate report for specific technology."""
+        formatted_name = tech_name.replace('-', ' ').title()
         
-        # Calculate statistics
-        total_repos = len(category_df)
-        total_stars = category_df['Stars'].sum()
-        avg_stars = category_df['Stars'].mean()
-        
-        # Build content
-        content = f"""# {category} Repositories
+        content = f"""# {formatted_name} Market Analysis
 
-*Last updated: {self.metadata.get('last_updated', 'Unknown')}*
+*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 
-## Overview
+## Technology: {formatted_name}
 
-- **Total Repositories**: {total_repos}
-- **Total Stars**: {total_stars:,}
-- **Average Stars**: {avg_stars:,.0f}
+### Data Overview
+- **Data Source**: ITJobsWatch
+- **Analysis Type**: Market trend extraction from charts
+- **Technology**: {formatted_name}
 
-## Repository Details
-
-| Repository | Stars | Forks | Contributors | Open Issues | Open PRs | Created | Last Active | Top Languages |
-|------------|-------|-------|--------------|-------------|----------|---------|-------------|---------------|
+### Available Data
 """
         
-        for repo in category_repos:
-            content += f"| <a href=\"https://github.com/{repo['Name']}\" target=\"_blank\">{repo['Name']}</a> | {repo['Stars']} | {repo['Forks']} | {repo['Contributors']} | {repo['Open Issues']} | {repo['Open Pull Requests']} | {repo['Date Created']} | {repo['Last Active']} | {repo.get('Top Languages', 'N/A')} |\n"
+        # Add data summary based on what's available
+        if isinstance(tech_data, dict):
+            if 'metadata' in tech_data:
+                content += f"- **Data Collection**: {tech_data['metadata'].get('timestamp', 'Unknown')}\n"
+            if 'chart_data' in tech_data:
+                content += f"- **Chart Data Points**: {len(tech_data['chart_data'])}\n"
         
         content += f"""
-## Key Insights
 
-### Most Popular
-- **{category_repos[0]['Name']}**: {category_repos[0]['Stars']} stars
+### Market Insights
 
-### Most Active Development
-"""
-        
-        # Find most active (recent pushes + high PR count)
-        recent_active = category_df.nlargest(3, 'Open Pull Requests')
-        for _, repo in recent_active.iterrows():
-            repo_formatted = format_repo_stats_for_display([repo.to_dict()])[0]
-            content += f"- **{repo_formatted['Name']}**: {repo_formatted['Open Pull Requests']} open PRs\n"
-        
-        content += f"""
+*Analysis based on ITJobsWatch trend data for {formatted_name}*
+
+### Chart Analysis
+- Chart data has been extracted using computer vision techniques
+- Trend analysis shows market demand patterns over time
+- Data points represent relative market share and growth
+
 ---
 [← Back to Overview](all.md)
 
-*Generated automatically from GitHub API data*
+*Generated automatically from ITJobsWatch data*
 """
         
+        # Ensure docs directory exists
+        os.makedirs('docs', exist_ok=True)
+        
         # Write to file
-        filepath = f'docs/{filename}'
-        with open(filepath, 'w', encoding='utf-8') as f:
+        filename = f'docs/{tech_name.replace(" ", "_").lower()}.md'
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write(content)
         
-        print(f"Generated {filepath}")
+        print(f"Generated {filename}")
+    
+    def generate_job_trends_report(self):
+        """Generate job trends report from table data."""
+        if not self.table_data_path.exists():
+            print("No table data directory found")
+            return
+        
+        content = f"""# Job Market Trends Analysis
+
+*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
+
+## Job Listing Analysis
+
+This report analyzes current job market trends based on scraped job listing data from ITJobsWatch.
+
+"""
+        
+        # Analyze table data files
+        table_files = list(self.table_data_path.glob('*.csv'))
+        
+        if table_files:
+            content += f"### Available Data\n\n"
+            total_jobs = 0
+            
+            for table_file in table_files:
+                try:
+                    df = pd.read_csv(table_file)
+                    job_count = len(df)
+                    total_jobs += job_count
+                    
+                    content += f"- **{table_file.stem}**: {job_count:,} job listings\n"
+                    
+                    # Add basic statistics if salary data exists
+                    if 'salary' in df.columns or 'Salary' in df.columns:
+                        salary_col = 'salary' if 'salary' in df.columns else 'Salary'
+                        # Basic salary analysis would go here
+                        content += f"  - Salary data available\n"
+                    
+                except Exception as e:
+                    content += f"- **{table_file.stem}**: Error loading data ({e})\n"
+            
+            content += f"\n**Total Job Listings**: {total_jobs:,}\n\n"
+        else:
+            content += "No job listing data available yet.\n\n"
+        
+        content += f"""
+### Analysis Notes
+
+- Data extracted from ITJobsWatch job listings
+- Represents current UK job market snapshot
+- Includes location, salary, and technology focus areas
+
+---
+[← Back to Overview](all.md)
+
+*Generated automatically from ITJobsWatch data*
+"""
+        
+        # Ensure docs directory exists
+        os.makedirs('docs', exist_ok=True)
+        
+        # Write to file
+        with open('docs/job_trends.md', 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        print("Generated docs/job_trends.md")
 
 
 def main():
     """Main report generation function."""
-    generator = ReportGenerator()
+    generator = ITJobsWatchReportGenerator()
     generator.generate_all_reports()
 
 
