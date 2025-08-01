@@ -19,14 +19,14 @@ A comprehensive UK IT market analysis tool that scrapes and analyzes data from I
 
 ## Problem Statement:
 
-**Volatility**
+**Volatility**<br>
 Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. This can of course be ignored but skipping the need for data-driven research leaves freelancers and IT professionals relying soley on intuition, constantly looking over their shoulder in a volatile/ speculative market conditions.
 
-**Manual Researching data is time consuming.** 
+**Manual Researching data is time consuming.** <br>
 Sources such as ITJobsWatch tend to be viewed best individually. Grouping queries together does not always compare trends.
 
-**AI Deep Research shortcomings**
-Cutting-edge Deep Research applications such as Gemini, Claude and ChatGPT, however impressive are observed to hallucinate statistics.
+**Shortcomings of AI Deep Research** <br>
+Cutting-edge Deep Research applications such as Gemini, Claude and ChatGPT, however impressive are still observed to hallucinate statistics. While their relevance continues to increase, hybrid solutions are likely optimal to verify particularly important data sources.
 
 ## Solution:
 
