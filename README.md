@@ -12,7 +12,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![ITJobsWatch](https://img.shields.io/badge/ITJobsWatch-Market%20Data-orange.svg)](https://www.itjobswatch.co.uk/)
+[![ITJobsWatch](https://img.shields.io/badge/Data%20Source-ITJobsWatch-orange.svg)](https://www.itjobswatch.co.uk/)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](integration/)
 
 A comprehensive UK IT market analysis tool that scrapes and analyzes data from ITJobsWatch to provide insights into technology trends, job market dynamics, and salary patterns across different tech sectors.
