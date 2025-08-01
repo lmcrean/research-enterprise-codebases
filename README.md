@@ -20,7 +20,7 @@ A comprehensive UK IT market analysis tool that scrapes and analyzes data from I
 ## Problem Statement:
 
 **Volatility**<br>
-Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. This can of course be ignored but skipping the need for data-driven research leaves freelancers and IT professionals relying soley on intuition, constantly looking over their shoulder in a volatile/ speculative market conditions.
+Public opinions circulate both of the apparent collapse and growth of certain sectors in IT, such as Web Development and Artificial Intelligence -- with inconsistent sources of data. Without data-validated research, IT professionals are left looking over their shoulders in a volatile/ speculative market conditions.
 
 **Manual Researching data is time consuming.** <br>
 Sources such as ITJobsWatch tend to be viewed best individually. Grouping queries together does not always compare trends.
