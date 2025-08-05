@@ -11,10 +11,25 @@ def get_color_scheme() -> Dict[str, str]:
     """
     return {
         'Artificial Intelligence': '#00FFFF',  # Cyan
+        'Data Analytics': '#FF0000',           # Red
+        'Data Science': '#00FF00',             # Green
         'Devops': '#FF00FF',                  # Magenta  
-        'Machine Learning': '#FFA500',         # Yellow
+        'Machine Learning': '#FFA500',         # Orange
         'Software Engineering': '#000000',     # Black (Key)
         'Web Development': '#8B4789'           # Purple (distinct)
+    }
+
+
+def get_language_color_scheme() -> Dict[str, str]:
+    """Get distinct colors for programming languages.
+    
+    Returns:
+        Dictionary mapping language names to hex colors
+    """
+    return {
+        'C#': '#0000FF',           # Blue
+        'Python': '#FFD700',        # Gold
+        'TypeScript': '#1E3A8A'     # Navy Blue
     }
 
 
@@ -69,7 +84,7 @@ def format_legend(ax, config: Dict) -> None:
     legend = ax.legend(
         loc='upper center',
         bbox_to_anchor=(0.5, -0.15),
-        ncol=5,
+        ncol=4,
         fontsize=config['legend_size'],
         frameon=False
     )

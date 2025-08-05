@@ -56,6 +56,8 @@ def load_all_datasets(data_dir: str) -> Dict[str, Tuple[List[float], List[float]
     datasets = {}
     csv_files = [
         'artificial-intelligence.csv',
+        'data-analytics.csv',
+        'data-science.csv',
         'devops.csv',
         'machine-learning.csv',
         'software-engineering.csv',
@@ -67,5 +69,29 @@ def load_all_datasets(data_dir: str) -> Dict[str, Tuple[List[float], List[float]
         if os.path.exists(file_path):
             tech_name = csv_file.replace('.csv', '').replace('-', ' ').title()
             datasets[tech_name] = load_csv_data(file_path)
+            
+    return datasets
+
+
+def load_language_datasets(data_dir: str) -> Dict[str, Tuple[List[float], List[float]]]:
+    """Load programming language CSV files from the data directory.
+    
+    Args:
+        data_dir: Directory containing CSV files
+        
+    Returns:
+        Dictionary mapping language names to (years, market_share) tuples
+    """
+    datasets = {}
+    language_files = [
+        ('csharp.csv', 'C#'),
+        ('python.csv', 'Python'),
+        ('typescript.csv', 'TypeScript')
+    ]
+    
+    for csv_file, display_name in language_files:
+        file_path = os.path.join(data_dir, csv_file)
+        if os.path.exists(file_path):
+            datasets[display_name] = load_csv_data(file_path)
             
     return datasets

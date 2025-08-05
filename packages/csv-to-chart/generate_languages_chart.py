@@ -1,4 +1,4 @@
-"""Main script to generate market share trend chart."""
+"""Script to generate programming languages market share trend chart."""
 
 import os
 import sys
@@ -8,33 +8,33 @@ from pathlib import Path
 # Add current directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
-from data_loader import load_all_datasets
+from data_loader import load_language_datasets
 from chart_styles import (
-    get_color_scheme, get_chart_config, style_axes, format_legend
+    get_language_color_scheme, get_chart_config, style_axes, format_legend
 )
 
 
-def create_market_share_chart(datasets, output_path):
-    """Create line chart showing market share trends.
+def create_languages_chart(datasets, output_path):
+    """Create line chart showing programming language market share trends.
     
     Args:
-        datasets: Dictionary of technology names to (years, market_share) data
+        datasets: Dictionary of language names to (years, market_share) data
         output_path: Path to save the output PNG file
     """
     # Get configuration
-    colors = get_color_scheme()
+    colors = get_language_color_scheme()
     config = get_chart_config()
     
     # Create figure and axis
     fig, ax = plt.subplots(figsize=config['figure_size'], dpi=config['dpi'])
     
-    # Plot each technology line
-    for tech_name, (years, market_shares) in datasets.items():
-        color = colors.get(tech_name, '#666666')
+    # Plot each language line
+    for lang_name, (years, market_shares) in datasets.items():
+        color = colors.get(lang_name, '#666666')
         ax.plot(
             years,
             market_shares,
-            label=tech_name,
+            label=lang_name,
             color=color,
             linewidth=config['line_width'],
             marker='o',
@@ -47,7 +47,7 @@ def create_market_share_chart(datasets, output_path):
     ax.set_xlabel('Year', fontsize=config['label_size'], fontweight='bold')
     ax.set_ylabel('Market Share (%)', fontsize=config['label_size'], fontweight='bold')
     ax.set_title(
-        'Technology Market Share Trends (2004-2025)',
+        'Programming Languages Market Share Trends (2004-2025)',
         fontsize=config['title_size'],
         fontweight='bold',
         pad=20
@@ -63,8 +63,18 @@ def create_market_share_chart(datasets, output_path):
     # Set y-axis to start from 0
     ax.set_ylim(bottom=0)
     
-    # Add legend
-    format_legend(ax, config)
+    # Adjust legend for 3 items
+    legend = ax.legend(
+        loc='upper center',
+        bbox_to_anchor=(0.5, -0.15),
+        ncol=3,
+        fontsize=config['legend_size'],
+        frameon=False
+    )
+    
+    # Style legend lines
+    for line in legend.get_lines():
+        line.set_linewidth(3)
     
     # Adjust layout to prevent label cutoff
     plt.tight_layout()
@@ -83,24 +93,24 @@ def main():
     base_dir = Path(__file__).parent.parent.parent
     data_dir = base_dir / 'data' / 'manual' / 'year_market-share'
     output_dir = base_dir / 'docs' / 'market-report'
-    output_path = output_dir / 'technology_market_trends.png'
+    output_path = output_dir / 'programming_languages_trends.png'
     
     # Load data
-    print("Loading CSV data...")
-    datasets = load_all_datasets(str(data_dir))
+    print("Loading language CSV data...")
+    datasets = load_language_datasets(str(data_dir))
     
     if not datasets:
-        print("Error: No data files found!")
+        print("Error: No language data files found!")
         return
     
-    print(f"Loaded {len(datasets)} datasets:")
-    for tech_name in datasets:
-        years, shares = datasets[tech_name]
-        print(f"  - {tech_name}: {len(years)} data points")
+    print(f"Loaded {len(datasets)} language datasets:")
+    for lang_name in datasets:
+        years, shares = datasets[lang_name]
+        print(f"  - {lang_name}: {len(years)} data points")
     
     # Generate chart
-    print("\nGenerating chart...")
-    create_market_share_chart(datasets, str(output_path))
+    print("\nGenerating languages chart...")
+    create_languages_chart(datasets, str(output_path))
     print("Done!")
 
 
