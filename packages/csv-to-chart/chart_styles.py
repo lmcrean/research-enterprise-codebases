@@ -30,7 +30,7 @@ def get_language_color_scheme() -> Dict[str, str]:
         'C#': '#0000FF',           # Blue
         'Java': '#FF0000',         # Red
         'Javascript': '#F7DF1E',   # JavaScript Yellow
-        'Python': '#FFD700',       # Gold
+        'Python': '#00FF00',       # Bright Green
         'TypeScript': '#3178C6'    # TypeScript Blue
     }
 
@@ -86,7 +86,7 @@ def get_job_titles_color_scheme() -> Dict[str, str]:
         'Analyst': '#FF1493',           # Deep Pink
         'Cyber Security': '#00CED1',    # Dark Turquoise
         'Data Analytics': '#FF4500',    # Orange Red
-        'Data Science': '#32CD32',      # Lime Green
+        'Data Science': '#000000',      # Black
         'Devops': '#9370DB',           # Medium Purple
         'Software Engineering': '#1E90FF',  # Dodger Blue
         'Web Development': '#FFD700'    # Gold
@@ -103,31 +103,31 @@ def get_cloud_technology_color_scheme() -> Dict[str, str]:
         # Cloud providers
         'Aws': '#FF9900',              # AWS Orange
         'Azure': '#0078D4',            # Azure Blue
-        'Gcp': '#4285F4',              # Google Blue
+        'Gcp': '#00FF00',              # Bright Green
         # Technologies
-        'Docker': '#2496ED',           # Docker Blue
-        'Kubernetes': '#326CE5',       # Kubernetes Blue
+        'Docker': '#FF0000',           # Bright Red
+        'Kubernetes': '#000000',       # Black
         'Terraform': '#7B42BC'         # Terraform Purple
     }
 
 
 def get_themes_sectors_color_scheme() -> Dict[str, str]:
-    """Get warm earth tones and purples for themes and sectors.
+    """Get CMYK + distinctive colors for themes and sectors.
     
     Returns:
         Dictionary mapping theme/sector names to hex colors
     """
     return {
-        # Themes
-        'Artificial Intelligence': '#8B4513',   # Saddle Brown
-        'Business Intelligence': '#D2691E',     # Chocolate
-        'Machine Learning': '#CD853F',          # Peru
-        'Risk Management': '#A0522D',           # Sienna
-        # Sectors
-        'Customer Service': '#4B0082',          # Indigo
-        'Finance': '#483D8B',                   # Dark Slate Blue
-        'Law': '#6A5ACD',                       # Slate Blue
-        'Marketing': '#9932CC'                  # Dark Orchid
+        # Themes - CMYK base colors
+        'Artificial Intelligence': '#00FFFF',   # Cyan
+        'Business Intelligence': '#FF00FF',     # Magenta
+        'Machine Learning': '#FFFF00',          # Yellow
+        'Risk Management': '#000000',           # Black (K)
+        # Sectors - Distinctive colors
+        'Customer Service': '#FF1493',          # Deep Pink
+        'Finance': '#FF8C00',                   # Dark Orange
+        'Law': '#808080',                       # Grey
+        'Marketing': '#00FF00'                  # Bright Green
     }
 
 
