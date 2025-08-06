@@ -1,5 +1,57 @@
-You've seen all the jobs in this batch
+================================================================================
+METADATA
+================================================================================
+Source: Welcome to the Jungle (WTTJ)
+Date: August 2025
+Number of Roles: 1
+Location: London, UK
+File Type: Job Listings Scrape
 
+================================================================================
+KEY ROLE INFORMATION
+================================================================================
+
+ROLE 1 Junior Full-Stack Software Engineer - Beacon
+-----------------------------------------------------
+Company: Beacon (A modern CRM for charities)
+Salary: £43,400
+Level: Junior level
+Location: 4 days a week in office
+Company Size: 21-100 employees
+Industry: B2B, SaaS, Charity
+
+Key Requirements:
+- At least 1 year practical experience with:
+  - React
+  - Node.js
+  - SQL databases
+
+
+Desirable Skills:
+- Material UI, Jest, Playwright
+- TypeScript, GraphQL
+- Storybook, AWS Lambda
+- Postgres, Amazon RDS, Google BigQuery
+- SQS/queueing architecture
+
+Key Responsibilities:
+- Design and implement improvements to core Beacon product
+- Write clean, maintainable code
+- Take end-to-end ownership of features
+- Build both interface and backend endpoints
+
+Notable Benefits:
+- Four day work week (3 day weekend every week)
+- 6 weeks (24 days) holiday + bank holidays
+- £60 bonus for every day of holiday taken
+- 150% pension match (up to 10%)
+
+================================================================================
+FULL DETAILED CONTENT
+================================================================================
+
+You've seen all the jobs in this batch
+https://app.welcometothejungle.com/jobs/q5l4xNb2
 See more matches
 Full Stack Software Engineer, Urban Jungle
 £39.5-40.5k
@@ -31,6 +83,7 @@ Company
 Role
 Who you are
 Whether you're just starting out in your career or already have some experience under your belt, we're looking for kind, curious problem solvers who want to have an impact on the lives of real people.
+
 You’ve worked with (or learned through academic/personal projects): JavaScript (we use Angular), Python
 You're eager to deepen your skillset in Front-End/UX design, Linux, Docker, AWS, and SQL
 You’re excited to take ownership, ship value fast, and continuously improve
@@ -50,23 +103,6 @@ Technical Interview (2hr 30mins)
 Final Stage (2 hours)
 Salary benchmarks
 Full-stack Engineer
-
-Junior
-Entry
-This job
-£20k
-£30k
-£40k
-£50k
-£60k
-£70k
-£80k
-View all salary benchmarks
-Share this job
-
-Report a problem with this job
-
-Hide company
 
 View 4 more jobs at Urban Jungle
 
