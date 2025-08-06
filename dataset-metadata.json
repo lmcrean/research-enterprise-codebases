@@ -1,0 +1,51 @@
+{
+  "title": "UK IT Market Analysis - ITJobsWatch Data",
+  "id": "rosalia-uk-it-market",
+  "subtitle": "Comprehensive UK IT job market data from ITJobsWatch including trends, salaries, and technology adoption",
+  "description": "This dataset contains scraped and analyzed data from ITJobsWatch, providing insights into the UK IT job market. It includes:\n\n## Data Sources\n- **ITJobsWatch Charts**: Computer vision processed trend charts for various technologies and job titles\n- **Job Listings**: Scraped job postings with location, salary, and skill requirements\n- **Market Share Data**: Historical trends for programming languages, cloud platforms, and job categories\n\n## Key Features\n- Time series data for technology adoption trends (2019-2025)\n- Salary distributions by role and location\n- Technology stack popularity rankings\n- London-specific market analysis\n- Sector-specific technology trends (Finance, Healthcare, etc.)\n\n## Data Format\n- CSV files for tabular data\n- JSON files for structured metadata\n- WebP/PNG images of original charts\n- Processed trend data with normalized values\n\n## Use Cases\n- Technology trend analysis\n- Salary benchmarking\n- Skills gap identification\n- Market demand forecasting\n- Career planning insights",
+  "isPrivate": false,
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "employment",
+    "jobs",
+    "technology",
+    "salaries",
+    "uk",
+    "london",
+    "programming",
+    "data-science",
+    "cloud-computing",
+    "market-analysis"
+  ],
+  "collaborators": [],
+  "data": [
+    {
+      "description": "Manual market share data for various technologies and job titles",
+      "name": "manual-market-data",
+      "totalBytes": -1,
+      "columns": []
+    },
+    {
+      "description": "Scraped ITJobsWatch charts and extracted trend data",
+      "name": "itjobswatch-charts",
+      "totalBytes": -1,
+      "columns": []
+    },
+    {
+      "description": "London job listings with detailed information",
+      "name": "london-jobs",
+      "totalBytes": -1,
+      "columns": []
+    },
+    {
+      "description": "Generated market analysis reports and visualizations",
+      "name": "market-reports",
+      "totalBytes": -1,
+      "columns": []
+    }
+  ]
+}

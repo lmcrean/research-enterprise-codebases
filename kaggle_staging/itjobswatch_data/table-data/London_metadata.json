@@ -1,0 +1,10 @@
+{
+  "location": "London",
+  "total_records": 50,
+  "total_pages": 1,
+  "scrape_start": "2025-07-30T17:19:27.224937",
+  "scrape_end": "2025-07-30T17:19:27.682363",
+  "success": true,
+  "error_message": null,
+  "duration_seconds": 0.457426
+}

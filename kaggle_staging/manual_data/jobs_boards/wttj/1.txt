@@ -1,0 +1,235 @@
+================================================================================
+METADATA
+================================================================================
+Source: Welcome to the Jungle (WTTJ)
+Date: August 2025
+Number of Roles: 1
+Location: London, UK
+File Type: Job Listings Scrape
+
+================================================================================
+KEY ROLE INFORMATION
+================================================================================
+
+ROLE 1 Junior Full-Stack Software Engineer - Beacon
+-----------------------------------------------------
+Company: Beacon (A modern CRM for charities)
+Salary: £43,400
+Level: Junior level
+Location: 4 days a week in office
+Company Size: 21-100 employees
+Industry: B2B, SaaS, Charity
+
+Key Requirements:
+- At least 1 year practical experience with:
+  - React
+  - Node.js
+  - SQL databases
+
+
+Desirable Skills:
+- Material UI, Jest, Playwright
+- TypeScript, GraphQL
+- Storybook, AWS Lambda
+- Postgres, Amazon RDS, Google BigQuery
+- SQS/queueing architecture
+
+Key Responsibilities:
+- Design and implement improvements to core Beacon product
+- Write clean, maintainable code
+- Take end-to-end ownership of features
+- Build both interface and backend endpoints
+
+Notable Benefits:
+- Four day work week (3 day weekend every week)
+- 6 weeks (24 days) holiday + bank holidays
+- £60 bonus for every day of holiday taken
+- 150% pension match (up to 10%)
+
+================================================================================
+FULL DETAILED CONTENT
+================================================================================
+
+You've seen all the jobs in this batch
+https://app.welcometothejungle.com/jobs/q5l4xNb2
+See more matches
+Full Stack Software Engineer, Urban Jungle
+£39.5-40.5k
+
++ Share Options
+
+Entry and Junior level
+More information about location
+
+4+ days a week in office (Oval, London)
+
+Urban Jungle
+Insurance for the demands of a new generation
+
+21-100 employees
+
+Fintech
+Insurance
+Social Impact
+D2C
+Open for applications
+
+
+Follow Urban Jungle
+
+Job
+
+Company
+Role
+Who you are
+Whether you're just starting out in your career or already have some experience under your belt, we're looking for kind, curious problem solvers who want to have an impact on the lives of real people.
+
+You’ve worked with (or learned through academic/personal projects): JavaScript (we use Angular), Python
+You're eager to deepen your skillset in Front-End/UX design, Linux, Docker, AWS, and SQL
+You’re excited to take ownership, ship value fast, and continuously improve
+You bring a clear, thoughtful communication style - translating technical complexity into plain English
+You’re a problem-solver through and through - big or small, you love a challenge!
+What the job involves
+We’re on the hunt for Software Engineers to join our 13-strong Full Stack Software Engineering team.
+You’ll hit the ground running, getting stuck into our tech stack from day one and shipping valuable features within your first few weeks. You’ll start by flexing your strengths, then we’ll quickly get you stuck into new areas to grow your skillset and widen your impact.
+You’ll be at the heart of a team that collaborates closely with Product, Commercial, and Data - all working together to build features that genuinely delight our customers and move the needle.
+You’ll start with high-impact, high-visibility features, then scale up to leading cross-functional projects like new product launches, integrations with our external partners, and platform-wide upgrades.
+Learn fast and often - you’ll level up your skills across a wide range of tools and technologies while working on meaningful, end-to-end challenges.
+You’ll bring your technical expertise to influence key decisions about how we design, build, and expand our growing portfolio of products and services.
+Be part of shaping the team’s future - your ideas will matter, and you’ll have a real voice in how we scale, operate, and grow.
+Application process
+Initial chat (30 mins - 45 mins)
+Technical Interview (2hr 30mins)
+Final Stage (2 hours)
+Salary benchmarks
+Full-stack Engineer
+
+View 4 more jobs at Urban Jungle
+
+Insights
+B Corporation
+49% female employees
+
+29% employee growth in 12 months
+
+Glassdoor (4.2)
+Glassdoor star iconGlassdoor star iconGlassdoor star iconGlassdoor star iconGlassdoor star icon
+Trustpilot (4.6)
+Company
+Company benefits
+Share options that can increase alongside performance and growth
+25 days paid annual leave, plus public holidays
+Rapid Progression. We’ll give you the opportunity to experience loads, and develop rapidly. You’ll get tons of responsibility from day one, and all the feedback, coaching and support you need to fuel your career growth
+Real Impact. You’ll work on big, interesting problems that will challenge you, and do so in a way that has a positive impact on people’s lives, the planet and our community
+A Clear Plan. We’ll give you the clarity on what we want to achieve, with the freedom and autonomy for you to decide how we get there
+The Best People. You’ll be surrounded by teammates who are exceptional at what they do, whilst being kind, honest people who champion our values
+A dedicated development budget, access to a senior mentor, and training on whatever you need to do your job well
+Well-being support. We’re committed to supporting both physical and mental well-being through access to therapy, weekly onsite yoga, and subsidised sports clubs
+Enhanced parental leave, and support for parents returning to work
+All. The. Fun. We regularly organise awesome socials and have some vibrant team communities such as book club and foodies
+Funding (last 2 of 7 rounds)
+Apr 2024
+
+£11.2m
+
+SERIES A
+
+May 2022
+
+£16.5m
+
+SERIES A
+
+Total funding: £43.6m
+Our take
+Urban Jungle was founded in 2016 by a team from both in and outside of the insurance industry. Jimmy Williams and Greg Smyth noticed that the insurance industry was moving at a really slow pace, hardly taking advantage of the available technology and often leaving customers behind, especially younger ones. Now Urban Jungle is the top rated home insurance provider in the UK.
+
+Modern insurers have inherited, from their 80s predecessors, a highly inefficient general approach to the industry: when launching a new system, only new customers are included in it, while old customers remain in the old system. Customer Service Operatives at really big insurers are fishing in different systems to find people's records and that does not favour productivity at all. The challenge with Urban Jungle’s process is to build up the insurance experience from scratch taking advantage of the technology that has been developed in recent years, reducing costs and empowering customers.
+
+Special attention needs to be paid to the insurance product. The responsiveness to the way people's risks are changing over time is a key aspect that insurers should always bear in mind. Adapting the insurance product to ever-changing needs is definitely the main challenge for Urban Jungle and its competitors, and the best way to do it is to keep continuous and direct contact with customers. Regularly testing the current insurance offer and showing readiness when adapting the product to a new necessity is the real turning point and what Urban Jungle is working for.
+
+Kirsty headshot
+Kirsty
+
+Company Specialist at Welcome to the Jungle
+
+Junior Full-Stack Software Engineer, Beacon
+£43.4k
+
+Junior level
+More information about location
+
+4 days a week in office
+
+Beacon
+A modern CRM for charities
+
+21-100 employees
+
+B2B
+SaaS
+Charity
+Be an early applicant
+
+
+Follow Beacon
+
+Job
+
+Company
+Role
+Who you are
+You'll need at least a year of direct practical experience with React, Node.js, and SQL databases.
+Desirable
+
+Material UI
+Writing tests with Jest and Playwright
+TypeScript
+GraphQL
+Storybook
+AWS Lambda
+Postgres
+Amazon RDS
+Google BigQuery
+SQS (or other queueing architecture. We love queues!)
+What the job involves
+Design and implement improvements to the core of the Beacon product
+Write clean, maintainable code to deliver on the Beacon product roadmap
+Identify and fix bugs in the existing system
+Take end-to-end ownership of features, from implementing the interface using our design system to building the backend endpoints that you need
+Work closely with other engineers to come up with creative and innovative solutions to tricky technical problems
+Salary benchmarks
+Full-stack Engineer
+
+
+
+Report a problem with this job
+
+Hide company
+
+View 2 more jobs at Beacon
+
+Company
+Company benefits
+Our customers are all charities - you'll get to build your career whilst having a genuinely positive impact on the world
+Four day work week. Our working model gives everyone a 3 day weekend, every week
+We'll give you 6 weeks (24 days) of holiday every year, plus bank holidays
+Taking time off is important. And we really mean it: We'll pay you a £60 bonus for every day of holiday you take
+Banded salary system so that everyone is paid the same for doing the same job, and your growth within the organisation is clear
+Beacon is climate positive (beyond carbon neutral), so your employment won't hurt the planet. Learn more
+A proper pension - we'll match 150% of your pension contributions (up to 10%)
+Private health insurance with routine dental & optical cover
+Modern parental leave policy (12 weeks at full pay, and it's the same for everyone, regardless of gender or circumstances)
+Cycle to work scheme
+Sabbatical every 5 years (6 weeks off, fully paid)
+Our take
+As nonprofits and charities often struggle to keep up with the level of innovation in the enterprise world, Beacon offers a cloud-based, data-driven CRM that lets them manage donations, fundraisers, payments, events & ticketing, marketing campaigns, and volunteers all in one place.
+
+The last few years has seen an increase in the developments in the Charity CRM space. Companies like Salesforce have rolled out major upgrades to its non-profit cloud, while platform-to-platform integrations are also becoming more common. Further to that point, Beacon is one company that’s recently integrated with JustGiving.
+
+The company has grown steadily in popularity since its 2017 inception, picking up well-respected clients like The New Humanitarian, The Jacobs Foundation, and Cruse Bereavement Care.
+
+Kirsty headshot
+Kirsty
+
+Company Specialist at Welcome to the Jungle
