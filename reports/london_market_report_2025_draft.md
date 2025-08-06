@@ -68,6 +68,8 @@ London's position as a global financial center is unmistakably reflected in Fina
 
 ![Themes & Sectors Excl Finance Trends](themes_sectors_excl_finance_trends.png)
 
+![Themes & Sectors 6-Year Trends](themes_sectors_6year_trends.png)
+
 **Top 3 Themes & Sectors by Market Share (2025, Excluding Finance):**
 1. Artificial Intelligence - 11.46%
 2. Marketing - 8.45%
