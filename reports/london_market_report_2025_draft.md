@@ -4,6 +4,20 @@
 
 The London permanent job market continues to evolve rapidly, driven by technological transformation and shifting business priorities. This report analyzes market share trends across six key dimensions - technology roles, programming languages, cloud infrastructure, job titles, and industry sectors - providing data-driven insights from 2004 to 2025. The data reveals a clear narrative: artificial intelligence and cloud technologies are reshaping the employment landscape, while traditional roles adapt to meet modern demands.
 
+## Methodology
+
+This report is based on comprehensive data collected and analyzed from ITJobsWatch, the UK's leading source of IT job market analytics and trends. The data represents real-time analysis of permanent IT job advertisements in the London market, tracking the frequency and prevalence of specific skills, technologies, and roles mentioned in job postings.
+
+**Data Collection Process:**
+- **Source**: ITJobsWatch (www.itjobswatch.co.uk) - London permanent jobs market data
+- **Time Period**: Historical trends from 2004 to 2025, capturing over two decades of market evolution
+- **Geographic Focus**: London metropolitan area, representing the UK's largest technology employment hub
+- **Data Points**: Market share percentages calculated from the relative frequency of terms appearing in permanent job advertisements
+- **Update Frequency**: Data reflects the most recent market conditions as of January 2025
+
+**Analysis Approach:**
+The market share percentages shown represent the proportion of permanent IT job advertisements in London that mention each specific technology, language, platform, or role. These percentages are calculated by ITJobsWatch through systematic analysis of job posting content, providing an objective measure of employer demand and market priorities. The trend lines visualize how these market shares have evolved over time, revealing both emerging technologies and declining legacy systems.
+
 ## Report 1: Technology Market Trends
 
 ![Technology Market Trends](technology_market_trends.png)
