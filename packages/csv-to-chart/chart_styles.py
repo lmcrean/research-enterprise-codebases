@@ -28,8 +28,10 @@ def get_language_color_scheme() -> Dict[str, str]:
     """
     return {
         'C#': '#0000FF',           # Blue
-        'Python': '#FFD700',        # Gold
-        'TypeScript': '#1E3A8A'     # Navy Blue
+        'Java': '#FF0000',         # Red
+        'Javascript': '#F7DF1E',   # JavaScript Yellow
+        'Python': '#FFD700',       # Gold
+        'TypeScript': '#3178C6'    # TypeScript Blue
     }
 
 
@@ -72,6 +74,61 @@ def style_axes(ax, config: Dict) -> None:
     # Tick styling
     ax.tick_params(axis='both', which='major', labelsize=config['label_size'])
     ax.tick_params(axis='x', rotation=45)
+
+
+def get_job_titles_color_scheme() -> Dict[str, str]:
+    """Get very distinct colors for job titles to avoid confusion.
+    
+    Returns:
+        Dictionary mapping job title names to hex colors
+    """
+    return {
+        'Analyst': '#FF1493',           # Deep Pink
+        'Cyber Security': '#00CED1',    # Dark Turquoise
+        'Data Analytics': '#FF4500',    # Orange Red
+        'Data Science': '#32CD32',      # Lime Green
+        'Devops': '#9370DB',           # Medium Purple
+        'Software Engineering': '#1E90FF',  # Dodger Blue
+        'Web Development': '#FFD700'    # Gold
+    }
+
+
+def get_cloud_technology_color_scheme() -> Dict[str, str]:
+    """Get cloud-inspired colors for cloud providers and technologies.
+    
+    Returns:
+        Dictionary mapping cloud/tech names to hex colors
+    """
+    return {
+        # Cloud providers
+        'Aws': '#FF9900',              # AWS Orange
+        'Azure': '#0078D4',            # Azure Blue
+        'Gcp': '#4285F4',              # Google Blue
+        # Technologies
+        'Docker': '#2496ED',           # Docker Blue
+        'Kubernetes': '#326CE5',       # Kubernetes Blue
+        'Terraform': '#7B42BC'         # Terraform Purple
+    }
+
+
+def get_themes_sectors_color_scheme() -> Dict[str, str]:
+    """Get warm earth tones and purples for themes and sectors.
+    
+    Returns:
+        Dictionary mapping theme/sector names to hex colors
+    """
+    return {
+        # Themes
+        'Artificial Intelligence': '#8B4513',   # Saddle Brown
+        'Business Intelligence': '#D2691E',     # Chocolate
+        'Machine Learning': '#CD853F',          # Peru
+        'Risk Management': '#A0522D',           # Sienna
+        # Sectors
+        'Customer Service': '#4B0082',          # Indigo
+        'Finance': '#483D8B',                   # Dark Slate Blue
+        'Law': '#6A5ACD',                       # Slate Blue
+        'Marketing': '#9932CC'                  # Dark Orchid
+    }
 
 
 def format_legend(ax, config: Dict) -> None:
