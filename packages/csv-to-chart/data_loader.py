@@ -54,21 +54,31 @@ def load_all_datasets(data_dir: str) -> Dict[str, Tuple[List[float], List[float]
         Dictionary mapping technology names to (years, market_share) tuples
     """
     datasets = {}
-    csv_files = [
-        'artificial-intelligence.csv',
-        'data-analytics.csv',
-        'data-science.csv',
-        'devops.csv',
-        'machine-learning.csv',
-        'software-engineering.csv',
-        'web-development.csv'
+    
+    # Load from themes subdirectory
+    themes_files = [
+        ('themes/artificial-intelligence.csv', 'Artificial Intelligence'),
+        ('themes/machine-learning.csv', 'Machine Learning')
     ]
     
-    for csv_file in csv_files:
+    # Load from job-title subdirectory
+    job_title_files = [
+        ('job-title/data-analytics.csv', 'Data Analytics'),
+        ('job-title/data-science.csv', 'Data Science'),
+        ('job-title/devops.csv', 'Devops'),
+        ('job-title/software-engineering.csv', 'Software Engineering'),
+        ('job-title/web-development.csv', 'Web Development')
+    ]
+    
+    # Combine all files
+    all_files = themes_files + job_title_files
+    
+    for csv_file, display_name in all_files:
         file_path = os.path.join(data_dir, csv_file)
         if os.path.exists(file_path):
-            tech_name = csv_file.replace('.csv', '').replace('-', ' ').title()
-            datasets[tech_name] = load_csv_data(file_path)
+            datasets[display_name] = load_csv_data(file_path)
+        else:
+            print(f"Warning: {csv_file} not found at {file_path}")
             
     return datasets
 
@@ -84,14 +94,16 @@ def load_language_datasets(data_dir: str) -> Dict[str, Tuple[List[float], List[f
     """
     datasets = {}
     language_files = [
-        ('csharp.csv', 'C#'),
-        ('python.csv', 'Python'),
-        ('typescript.csv', 'TypeScript')
+        ('languages/csharp.csv', 'C#'),
+        ('languages/python.csv', 'Python'),
+        ('languages/typescript.csv', 'TypeScript')
     ]
     
     for csv_file, display_name in language_files:
         file_path = os.path.join(data_dir, csv_file)
         if os.path.exists(file_path):
             datasets[display_name] = load_csv_data(file_path)
+        else:
+            print(f"Warning: {csv_file} not found at {file_path}")
             
     return datasets

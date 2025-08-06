@@ -91,8 +91,8 @@ def main():
     """Main execution function."""
     # Define paths
     base_dir = Path(__file__).parent.parent.parent
-    data_dir = base_dir / 'data' / 'manual' / 'year_market-share'
-    output_dir = base_dir / 'docs' / 'market-report'
+    data_dir = base_dir / 'api' / 'data' / 'manual' / 'year_market-share'
+    output_dir = base_dir / 'reports'
     output_path = output_dir / 'programming_languages_trends.png'
     
     # Load data
