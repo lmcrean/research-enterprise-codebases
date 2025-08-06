@@ -42,7 +42,7 @@ def get_chart_config() -> Dict:
         Dictionary with chart configuration parameters
     """
     return {
-        'figure_size': (14, 8),
+        'figure_size': (14, 16),
         'dpi': 100,
         'title_size': 16,
         'label_size': 12,
