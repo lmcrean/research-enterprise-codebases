@@ -15,13 +15,18 @@ java,244,
 typescript,235,
 javascript,246,
 software developer, 248
+aws,245
+gcp,196
+azure,207
+docker, 232
+kubernetes, 232
 
 TOTALJOBS
 travel from postcode -- 90 mins
 https://www.totaljobs.com/jobs/{{keyword_here}}?searchOrigin=Resultlist_top-search&commutetime=UB3+3FJ%3B90%3Bpublic_transport&action=facet_selected%3Bcommutetime%3BUB3+3FJ_90_public_transport
 
-Software Engineer,1143
-software developer, 1150
+Software Engineer,1161
+software developer, 1161
 Web Developer,207
 devops, 608
 python, 898

@@ -68,14 +68,14 @@ def main():
     
     # Report 3: Job Titles
     print("\n=== Report 3: Job Titles ===")
-    # Map job board keywords to ITJobsWatch categories
+    # Map job board keywords to ITJobsWatch categories - keeping software developer separate
     title_mapping = {
         'devops': 'devops',
-        'software engineer': 'software engineering',
-        'software developer': 'software engineering',
-        'data analyst': 'data analytics',
-        'data scientist': 'data science',
-        'web developer': 'web development',
+        'software engineer': 'software engineer',
+        'software developer': 'software developer',
+        'data analyst': 'data analyst',
+        'data scientist': 'data scientist',
+        'web developer': 'web developer',
         'cyber security': 'cyber security'
     }
     
@@ -93,15 +93,21 @@ def main():
                 else:
                     title_data[board][mapped_key] = count
     
-    # Create ITJobsWatch data with unique keys
+    # Create ITJobsWatch data with unique keys - including software developer
     title_benchmarks = {
         'devops': 11.45,
-        'software engineering': 8.35,
+        'software engineer': 8.35,
+        'software developer': 0.59,  # Current ITJobsWatch market share
         'cyber security': 7.47,
-        'data analytics': 7.12,
-        'data science': 6.58,
-        'web development': 4.52
+        'data analyst': 2.58,  # Updated from CSV
+        'data scientist': 3.74,  # Updated from CSV
+        'web developer': 0.64  # Updated from CSV
     }
+    
+    # Debug output
+    print("\nDEBUG: ITJobsWatch benchmarks being passed to chart:")
+    for title, value in title_benchmarks.items():
+        print(f"  {title}: {value}%")
     
     create_comparison_chart(
         title_data,

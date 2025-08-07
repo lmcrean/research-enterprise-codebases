@@ -63,9 +63,11 @@ def create_comparison_chart(
     # This will be normalized to 100% like other columns
     itjobs_total = sum(itjobswatch_data.get(cat, 0) for cat in categories)
     board_totals.append(itjobs_total)
+    print(f"\nDEBUG: ITJobsWatch data mapping:")
     for i, cat in enumerate(categories):
         if cat in itjobswatch_data:
             values[i, -1] = itjobswatch_data[cat]  # Store original percentage
+            print(f"  {cat}: {itjobswatch_data[cat]}%")
     
     # Calculate percentages
     percentages = np.zeros_like(values)
@@ -129,6 +131,7 @@ def create_comparison_chart(
                         # Show original market share % and normalized %
                         original_pct = values[cat_idx, j]  # Original ITJobsWatch percentage
                         label_text = f'({original_pct:.1f}%)\n{pct:.1f}%'
+                        print(f"DEBUG: ITJobsWatch label for {cat}: orig={original_pct:.2f}%, norm={pct:.1f}%")
                     
                     fontsize = 8 if pct > 3 else 7
                     text_color = 'black' if should_use_black_text(color) else 'white'

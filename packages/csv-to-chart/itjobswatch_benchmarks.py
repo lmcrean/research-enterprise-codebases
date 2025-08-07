@@ -6,8 +6,8 @@ PROGRAMMING_LANGUAGES = {
     'java': 8.02,
     'javascript': 7.21,
     'typescript': 5.79,
-    'c#': 6.44,
-    'csharp': 6.44  # Alternative spelling
+    'c#': 4.54,
+    'csharp': 4.54  # Alternative spelling
 }
 
 # Report 2: Cloud & Technology Infrastructure (2025 Market Share %)
@@ -17,7 +17,7 @@ CLOUD_INFRASTRUCTURE = {
     'kubernetes': 6.25,
     'docker': 4.79,
     'terraform': 5.08,
-    'gcp': 3.07
+    'gcp': 5.41
 }
 
 # Report 3: Job Titles (2025 Market Share %)
@@ -27,13 +27,13 @@ JOB_TITLES = {
     'software engineering': 8.35,
     'software engineer': 8.35,
     'cyber security': 7.47,
-    'data analytics': 7.12,
-    'data analyst': 7.12,
-    'data science': 6.58,
-    'data scientist': 6.58,
-    'web development': 4.52,
-    'web developer': 4.52,
-    'software developer': 8.35  # Grouping with software engineering
+    'data analytics': 2.58,
+    'data analyst': 2.58,
+    'data science': 3.74,
+    'data scientist': 3.74,
+    'web development': 0.64,
+    'web developer': 0.64,
+    'software developer': 0.59  # Current ITJobsWatch market share (2025)
 }
 
 # Report 4: Themes & Sectors (2025 Market Share %)
@@ -42,13 +42,13 @@ THEMES_SECTORS = {
     'artificial intelligence': 11.46,
     'ai': 11.46,
     'marketing': 8.45,
-    'risk management': 7.30,
-    'machine learning': 6.52,
-    'ml': 6.52,
-    'business intelligence': 5.85,
-    'bi': 5.85,
-    'customer service': 2.75,
-    'law': 1.82
+    'risk management': 5.81,
+    'machine learning': 6.34,
+    'ml': 6.34,
+    'business intelligence': 6.67,
+    'bi': 6.67,
+    'customer service': 3.87,
+    'law': 7.30
 }
 
 # Report 5: Themes & Sectors Excluding Finance (2025 Market Share %)
@@ -57,13 +57,13 @@ THEMES_SECTORS_NO_FINANCE = {
     'artificial intelligence': 11.46,
     'ai': 11.46,
     'marketing': 8.45,
-    'risk management': 7.30,
-    'machine learning': 6.52,
-    'ml': 6.52,
-    'business intelligence': 5.85,
-    'bi': 5.85,
-    'customer service': 2.75,
-    'law': 1.82
+    'risk management': 5.81,
+    'machine learning': 6.34,
+    'ml': 6.34,
+    'business intelligence': 6.67,
+    'bi': 6.67,
+    'customer service': 3.87,
+    'law': 7.30
 }
 
 def get_benchmark_value(category: str, report_type: str) -> float:
